@@ -91,6 +91,11 @@ abstract class Zend_View_Helper_Placeholder_Container_Abstract extends ArrayObje
     protected $_captureKey;
 
     /**
+     * @var Zend_View_Abstract
+     */
+    public $view;
+
+    /**
      * Constructor - This is needed so that we can attach a class member as the ArrayObject container
      *
      * @return \Zend_View_Helper_Placeholder_Container_Abstract

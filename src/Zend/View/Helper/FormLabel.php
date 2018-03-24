@@ -42,6 +42,10 @@ class Zend_View_Helper_FormLabel extends Zend_View_Helper_FormElement
     public function formLabel($name, $value = null, array $attribs = null)
     {
         $info = $this->_getInfo($name, $value, $attribs);
+        // Extracted below
+        $id = null;
+        $disable = null;
+        $escape = null;
         extract($info); // name, value, attribs, options, listsep, disable, escape
 
         // build the element

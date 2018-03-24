@@ -41,6 +41,8 @@ class Zend_View_Helper_Fieldset extends Zend_View_Helper_FormElement
     public function fieldset($name, $content, $attribs = null)
     {
         $info = $this->_getInfo($name, $content, $attribs);
+        // Extracted below
+        $escape = null;
         extract($info);
 
         // get legend

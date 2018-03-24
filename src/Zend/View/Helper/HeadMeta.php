@@ -166,7 +166,8 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
             $item  = $this->createData($type, $args[0], $args[1], $args[2]);
 
             if ('offsetSet' == $action) {
-                return $this->offsetSet($index, $item);
+                $this->offsetSet($index, $item);
+                return;
             }
 
             $this->$action($item);
@@ -241,7 +242,7 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
             throw $e;
         }
 
-        return $this->getContainer()->append($value);
+        $this->getContainer()->append($value);
     }
 
     /**
@@ -260,7 +261,7 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
             throw $e;
         }
 
-        return $this->getContainer()->offsetSet($index, $value);
+        $this->getContainer()->offsetSet($index, $value);
     }
 
     /**
@@ -278,7 +279,7 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
             throw $e;
         }
 
-        return $this->getContainer()->offsetUnset($index);
+        $this->getContainer()->offsetUnset($index);
     }
 
     /**
@@ -296,7 +297,7 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
             throw $e;
         }
 
-        return $this->getContainer()->prepend($value);
+        $this->getContainer()->prepend($value);
     }
 
     /**
@@ -321,7 +322,7 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
             }
         }
 
-        return $this->append($value);
+        $this->append($value);
     }
 
     /**

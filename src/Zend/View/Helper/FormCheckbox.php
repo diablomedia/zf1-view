@@ -56,6 +56,9 @@ class Zend_View_Helper_FormCheckbox extends Zend_View_Helper_FormElement
     public function formCheckbox($name, $value = null, $attribs = null, array $checkedOptions = null)
     {
         $info = $this->_getInfo($name, $value, $attribs);
+        // Extracted below
+        $id = null;
+        $disable = null;
         extract($info); // name, id, value, attribs, options, listsep, disable
 
         $checked = false;

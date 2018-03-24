@@ -67,6 +67,10 @@ class Zend_View_Helper_FormRadio extends Zend_View_Helper_FormElement
     {
 
         $info = $this->_getInfo($name, $value, $attribs, $options, $listsep);
+        // extracted below
+        $id = null;
+        $escape = null;
+        $disable = null;
         extract($info); // name, value, attribs, options, listsep, disable
 
         // retrieve attributes for labels (prefixed with 'label_' or 'label')
@@ -118,11 +122,11 @@ class Zend_View_Helper_FormRadio extends Zend_View_Helper_FormElement
         $value = (array) $value;
 
         // Set up the filter - Alnum + hyphen + underscore
-        $pattern = @preg_match('/\pL/u', 'a') 
+        $pattern = @preg_match('/\pL/u', 'a')
             ? '/[^\p{L}\p{N}\-\_]/u'    // Unicode
             : '/[^a-zA-Z0-9\-\_]/';     // No Unicode
         $filter = new Zend_Filter_PregReplace($pattern, "");
-        
+
         // add radio buttons to the list.
         foreach ($options as $opt_value => $opt_label) {
 
@@ -166,7 +170,7 @@ class Zend_View_Helper_FormRadio extends Zend_View_Helper_FormElement
             // add to the array of radio buttons
             $list[] = $radio;
         }
-        
+
         // XHTML or HTML for standard list separator?
         if (!$this->_isXhtml() && false !== strpos($listsep, '<br />')) {
             $listsep = str_replace('<br />', '<br>', $listsep);

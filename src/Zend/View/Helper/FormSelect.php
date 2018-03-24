@@ -62,6 +62,9 @@ class Zend_View_Helper_FormSelect extends Zend_View_Helper_FormElement
         $options = null, $listsep = "<br />\n")
     {
         $info = $this->_getInfo($name, $value, $attribs, $options, $listsep);
+        // Extracted below
+        $id = null;
+        $disable = null;
         extract($info); // name, id, value, attribs, options, listsep, disable
 
         // force $value to array so we can compare multiple values to multiple
@@ -99,7 +102,7 @@ class Zend_View_Helper_FormSelect extends Zend_View_Helper_FormElement
             $optionClasses = $attribs['optionClasses'];
             unset($attribs['optionClasses']);
         }
-        
+
         // now start building the XHTML.
         $disabled = '';
         if (true === $disable) {

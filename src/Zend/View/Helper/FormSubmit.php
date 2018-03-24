@@ -50,6 +50,9 @@ class Zend_View_Helper_FormSubmit extends Zend_View_Helper_FormElement
     public function formSubmit($name, $value = null, $attribs = null)
     {
         $info = $this->_getInfo($name, $value, $attribs);
+        // Extracted below
+        $id = null;
+        $disable = null;
         extract($info); // name, value, attribs, options, listsep, disable, id
         // check if disabled
         $disabled = '';

@@ -50,6 +50,9 @@ class Zend_View_Helper_FormText extends Zend_View_Helper_FormElement
     public function formText($name, $value = null, $attribs = null)
     {
         $info = $this->_getInfo($name, $value, $attribs);
+        // extracted below
+        $disable = null;
+        $id = null;
         extract($info); // name, value, attribs, options, listsep, disable
 
         // build the element

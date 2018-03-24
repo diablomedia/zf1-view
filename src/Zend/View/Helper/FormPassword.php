@@ -50,6 +50,9 @@ class Zend_View_Helper_FormPassword extends Zend_View_Helper_FormElement
     public function formPassword($name, $value = null, $attribs = null)
     {
         $info = $this->_getInfo($name, $value, $attribs);
+        // Extracted below
+        $disable = null;
+        $id = null;
         extract($info); // name, value, attribs, options, listsep, disable
 
         // is it disabled?

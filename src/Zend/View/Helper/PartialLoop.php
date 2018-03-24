@@ -39,6 +39,11 @@ class Zend_View_Helper_PartialLoop extends Zend_View_Helper_Partial
     protected $partialCounter = 0;
 
     /**
+     * @var integer
+     */
+    protected $partialTotalCount;
+
+    /**
      * Renders a template fragment within a variable scope distinct from the
      * calling View object.
      *
