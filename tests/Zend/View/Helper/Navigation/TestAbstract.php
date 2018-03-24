@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Controller/Front.php';
-require_once 'Zend/Translate.php';
-require_once 'Zend/View.php';
-require_once 'Zend/Navigation.php';
 
 /**
  * Base class for navigation view helper tests

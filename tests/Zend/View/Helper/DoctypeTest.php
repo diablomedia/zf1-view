@@ -20,8 +20,6 @@
  * @version    $Id$
  */
 
-/** Zend_View_Helper_Doctype */
-require_once 'Zend/View/Helper/Doctype.php';
 
 /**
  * Test class for Zend_View_Helper_Doctype.

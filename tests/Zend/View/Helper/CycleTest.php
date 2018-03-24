@@ -20,8 +20,6 @@
  * @version    $Id$
  */
 
-/** Zend_View_Helper_Cycle */
-require_once 'Zend/View/Helper/Cycle.php';
 
 /**
  * Test class for Zend_View_Helper_Cycle.

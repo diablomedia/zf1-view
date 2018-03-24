@@ -20,8 +20,6 @@
  * @version    $Id: FormSubmitTest.php 23772 2011-02-28 21:35:29Z ralph $
  */
 
-require_once 'Zend/View/Helper/FormSubmit.php';
-require_once 'Zend/View.php';
 
 /**
  * Test class for Zend_View_Helper_HtmlElement JS Escaping.

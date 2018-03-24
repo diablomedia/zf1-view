@@ -21,9 +21,6 @@
  * @version    $Id: UserAgentTest.php $
  */
 
-require_once 'Zend/View.php';
-require_once 'Zend/View/Helper/UserAgent.php';
-require_once 'Zend/Http/UserAgent.php';
 
 /**
  * Zend_View_Helper_UserAgentTest

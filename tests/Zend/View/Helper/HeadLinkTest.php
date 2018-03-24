@@ -20,14 +20,6 @@
  * @version    $Id$
  */
 
-/** Zend_View_Helper_HeadLink */
-require_once 'Zend/View/Helper/HeadLink.php';
-
-/** Zend_View_Helper_Placeholder_Registry */
-require_once 'Zend/View/Helper/Placeholder/Registry.php';
-
-/** Zend_View */
-require_once 'Zend/View.php';
 
 /**
  * Test class for Zend_View_Helper_HeadLink.

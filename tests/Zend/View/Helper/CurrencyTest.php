@@ -20,11 +20,6 @@
  * @version    $Id: TranslateTest.php 18387 2010-09-23 21:00:00Z thomas $
  */
 
-/** Zend_View_Helper_Currency */
-require_once 'Zend/View/Helper/Currency.php';
-
-/** Zend_Currency */
-require_once 'Zend/Currency.php';
 
 /**
  * Test class for Zend_View_Helper_Currency
@@ -62,7 +57,6 @@ class Zend_View_Helper_CurrencyTest extends PHPUnit\Framework\TestCase
     public function setUp()
     {
         $this->clearRegistry();
-        require_once 'Zend/Cache.php';
         $this->_cache = Zend_Cache::factory('Core', 'File',
                  array('lifetime' => 120, 'automatic_serialization' => true),
                  array('cache_dir' => dirname(__FILE__) . '/../../_files/'));

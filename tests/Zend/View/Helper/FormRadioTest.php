@@ -20,8 +20,6 @@
  * @version    $Id$
  */
 
-require_once 'Zend/View/Helper/FormRadio.php';
-require_once 'Zend/View.php';
 
 /**
  * Zend_View_Helper_FormRadioTest
@@ -318,7 +316,6 @@ class Zend_View_Helper_FormRadioTest extends PHPUnit\Framework\TestCase
             'options' => $options,
         ));
 
-        require_once 'Zend/Filter/Alnum.php';
         $filter = new Zend_Filter_Alnum();
         foreach ($options as $key => $value) {
             $id = 'foo-' . $filter->filter($key);
@@ -340,7 +337,6 @@ class Zend_View_Helper_FormRadioTest extends PHPUnit\Framework\TestCase
             'options' => $options,
         ));
 
-        require_once 'Zend/Filter/Alnum.php';
         $filter = new Zend_Filter_Alnum();
         foreach ($options as $key => $value) {
             $id = 'foo-bar-' . $filter->filter($key);

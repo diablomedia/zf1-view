@@ -21,7 +21,6 @@
  */
 
 require_once dirname(__FILE__) . '/TestAbstract.php';
-require_once 'Zend/View/Helper/Navigation.php';
 
 /**
  * Tests Zend_View_Helper_Navigation
@@ -379,7 +378,7 @@ class Zend_View_Helper_Navigation_NavigationTest
 
         $this->assertEquals($expected, $actual);
     }
-    
+
     /**
      * @group ZF-10458
      */
@@ -388,14 +387,14 @@ class Zend_View_Helper_Navigation_NavigationTest
         $this->_helper->view->addHelperPath(
             $this->_files . '/helpers',
             'My_View_Helper_Navigation'
-        );                
-        
+        );
+
         $this->assertTrue(
             $this->_helper->findHelper('menu') instanceof
                 My_View_Helper_Navigation_Menu
         );
     }
-    
+
     /**
      * @group ZF-10458
      */
@@ -405,7 +404,7 @@ class Zend_View_Helper_Navigation_NavigationTest
             $this->_files . '/helpers',
             'My_View_Helper_Navigation'
         );
-        
+
         $expected = array(
             'Zend_View_Helper_' => array(
                 'Zend/View/Helper/',
@@ -414,10 +413,10 @@ class Zend_View_Helper_Navigation_NavigationTest
                 $this->_files . '/helpers/',
             ),
         );
-        
+
         $this->assertSame($expected, $this->_helper->view->getHelperPaths());
     }
-    
+
     /**
      * @group ZF-10458
      */
@@ -427,7 +426,7 @@ class Zend_View_Helper_Navigation_NavigationTest
             $this->_files . '/helpers',
             'My_View_Helper_Navigation'
         );
-        
+
         $this->assertSame('<menu/>', (string) $this->_helper->menu());
     }
 

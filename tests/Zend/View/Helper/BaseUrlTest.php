@@ -20,15 +20,6 @@
  * @version    $Id$
  */
 
-/**
- * @see Zend_View_Helper_BaseUrl
- */
-require_once 'Zend/View/Helper/BaseUrl.php';
-
-/**
- * @see Zend_Controller_Front
- */
-require_once 'Zend/Controller/Front.php';
 
 /**
  * @category   Zend

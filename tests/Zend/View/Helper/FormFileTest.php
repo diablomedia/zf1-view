@@ -20,8 +20,6 @@
  * @version    $Id$
  */
 
-require_once 'Zend/View.php';
-require_once 'Zend/View/Helper/FormFile.php';
 
 /**
  * Zend_View_Helper_FormFileTest

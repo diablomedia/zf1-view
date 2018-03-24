@@ -20,12 +20,6 @@
  * @version    $Id$
  */
 
-/** Zend_View_Helper_Translate */
-require_once 'Zend/View/Helper/Translate.php';
-
-/** Zend_Translate */
-require_once 'Zend/Translate.php';
-require_once 'Zend/Translate/Adapter/Array.php';
 
 /**
  * Test class for Zend_View_Helper_Translate.

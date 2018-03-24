@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-/** Zend_View_Helper_HeadStyle */
-require_once 'Zend/View/Helper/HeadStyle.php';
-
-/** Zend_View_Helper_Placeholder_Registry */
-require_once 'Zend/View/Helper/Placeholder/Registry.php';
 
 /**
  * Test class for Zend_View_Helper_HeadStyle.

@@ -20,8 +20,6 @@
  * @version    $Id$
  */
 
-require_once 'Zend/View.php';
-require_once 'Zend/View/Helper/FormPassword.php';
 
 /**
  * Zend_View_Helper_FormPasswordTest

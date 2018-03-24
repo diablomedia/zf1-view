@@ -20,8 +20,6 @@
  * @version    $Id$
  */
 
-require_once 'Zend/View/Helper/FormCheckbox.php';
-require_once 'Zend/View.php';
 
 /**
  * Zend_View_Helper_FormCheckboxTest
