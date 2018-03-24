@@ -382,13 +382,8 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
     public function testNoPath()
     {
         $view = new Zend_View();
-        try {
-            $view->render('somefootemplate.phtml');
-            $this->fail('Rendering a template when no script path is set should raise an exception');
-        } catch (Exception $e) {
-            // success...
-            // @todo  assert something?
-        }
+        $this->expectException(Exception::class);
+        $view->render('somefootemplate.phtml');
     }
 
     /**
@@ -515,6 +510,9 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
         $this->assertEquals('My_View_Filter_', $prefix);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testUnset()
     {
         $view = new Zend_View();
@@ -525,13 +523,8 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
     public function testSetProtectedThrowsException()
     {
         $view = new Zend_View();
-        try {
-            $view->_path = 'bar';
-            $this->fail('Should not be able to set protected properties');
-        } catch (Exception $e) {
-            // success
-            // @todo  assert something?
-        }
+        $this->expectException(Exception::class);
+        $view->_path = 'bar';
     }
 
     public function testHelperPathWithPrefix()
@@ -583,24 +576,21 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
             $view->assign('_path', dirname(__FILE__) . '/View/_stubs/HelperDir2/');
             $this->fail('Protected/private properties cannot be assigned');
         } catch (Exception $e) {
-            // success
-            // @todo  assert something?
+            $this->assertSame('Setting private or protected class members is not allowed', $e->getMessage());
         }
 
         try {
             $view->assign(array('_path' => dirname(__FILE__) . '/View/_stubs/HelperDir2/'));
             $this->fail('Protected/private properties cannot be assigned');
         } catch (Exception $e) {
-            // success
-            // @todo  assert something?
+            $this->assertSame('Setting private or protected class members is not allowed', $e->getMessage());
         }
 
         try {
             $view->assign($this);
             $this->fail('Assign spec requires string or array');
         } catch (Exception $e) {
-            // success
-            // @todo  assert something?
+            $this->assertSame('assign() expects a string or array, received object', $e->getMessage());
         }
     }
 

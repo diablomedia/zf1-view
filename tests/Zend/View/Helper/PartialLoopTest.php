@@ -161,11 +161,8 @@ class Zend_View_Helper_PartialLoopTest extends PHPUnit\Framework\TestCase
         ));
         $this->helper->setView($view);
 
-        try {
-            $result = $this->helper->partialLoop('partialLoop.phtml', $o);
-            $this->fail('PartialLoop should only work with arrays and iterators');
-        } catch (Exception $e) {
-        }
+        $this->expectException(Exception::class);
+        $result = $this->helper->partialLoop('partialLoop.phtml', $o);
     }
 
     /**
@@ -272,6 +269,7 @@ class Zend_View_Helper_PartialLoopTest extends PHPUnit\Framework\TestCase
 
     /**
      * @group ZF-3083
+     * @doesNotPerformAssertions
      */
     public function testEmptyArrayPassedToPartialLoopShouldNotThrowException()
     {

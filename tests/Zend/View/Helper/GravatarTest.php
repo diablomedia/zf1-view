@@ -253,6 +253,9 @@ class Zend_View_Helper_GravatarTest extends PHPUnit\Framework\TestCase
         );
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testInvalidKeyPassedToSetOptionsMethod()
     {
         $options = array(

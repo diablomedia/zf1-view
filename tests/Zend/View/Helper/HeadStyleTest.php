@@ -94,19 +94,27 @@ class Zend_View_Helper_HeadStyleTest extends PHPUnit\Framework\TestCase
         try {
             $this->helper->append('foo');
             $this->fail('Non-style value should not append');
-        } catch (Zend_View_Exception $e) { }
+        } catch (Zend_View_Exception $e) {
+            $this->assertSame('Invalid value passed to append; please use appendStyle()', $e->getMessage());
+        }
         try {
             $this->helper->offsetSet(5, 'foo');
             $this->fail('Non-style value should not offsetSet');
-        } catch (Zend_View_Exception $e) { }
+        } catch (Zend_View_Exception $e) {
+            $this->assertSame('Invalid value passed to offsetSet; please use offsetSetStyle()', $e->getMessage());
+        }
         try {
             $this->helper->prepend('foo');
             $this->fail('Non-style value should not prepend');
-        } catch (Zend_View_Exception $e) { }
+        } catch (Zend_View_Exception $e) {
+            $this->assertSame('Invalid value passed to prepend; please use prependStyle()', $e->getMessage());
+        }
         try {
             $this->helper->set('foo');
             $this->fail('Non-style value should not set');
-        } catch (Zend_View_Exception $e) { }
+        } catch (Zend_View_Exception $e) {
+            $this->assertSame('Invalid value passed to set; please use setStyle()', $e->getMessage());
+        }
     }
 
     public function testOverloadAppendStyleAppendsStyleToStack()
@@ -281,18 +289,14 @@ class Zend_View_Helper_HeadStyleTest extends PHPUnit\Framework\TestCase
 
     public function testInvalidMethodRaisesException()
     {
-        try {
-            $this->helper->bogusMethod();
-            $this->fail('Invalid method should raise exception');
-        } catch (Zend_View_Exception $e) { }
+        $this->expectException(Zend_View_Exception::class);
+        $this->helper->bogusMethod();
     }
 
     public function testTooFewArgumentsRaisesException()
     {
-        try {
-            $this->helper->appendStyle();
-            $this->fail('Too few arguments should raise exception');
-        } catch (Zend_View_Exception $e) { }
+        $this->expectException(Zend_View_Exception::class);
+        $this->helper->appendStyle();
     }
 
     public function testIndentationIsHonored()
@@ -318,6 +322,9 @@ h1 {
         $this->assertContains('    }', $string);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testSerialCapturingWorks()
     {
         $this->helper->headStyle()->captureStart();

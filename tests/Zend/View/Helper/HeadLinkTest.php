@@ -94,38 +94,26 @@ class Zend_View_Helper_HeadLinkTest extends PHPUnit\Framework\TestCase
 
     public function testPrependThrowsExceptionWithoutArrayArgument()
     {
-        try {
-            $this->helper->prepend('foo');
-            $this->fail('prepend should raise exception without array argument');
-        } catch (Exception $e) {
-        }
+        $this->expectException(Exception::class);
+        $this->helper->prepend('foo');
     }
 
     public function testAppendThrowsExceptionWithoutArrayArgument()
     {
-        try {
-            $this->helper->append('foo');
-            $this->fail('append should raise exception without array argument');
-        } catch (Exception $e) {
-        }
+        $this->expectException(Exception::class);
+        $this->helper->append('foo');
     }
 
     public function testSetThrowsExceptionWithoutArrayArgument()
     {
-        try {
-            $this->helper->set('foo');
-            $this->fail('set should raise exception without array argument');
-        } catch (Exception $e) {
-        }
+        $this->expectException(Exception::class);
+        $this->helper->set('foo');
     }
 
     public function testOffsetSetThrowsExceptionWithoutArrayArgument()
     {
-        try {
-            $this->helper->offsetSet(1, 'foo');
-            $this->fail('set should raise exception without array argument');
-        } catch (Exception $e) {
-        }
+        $this->expectException(Exception::class);
+        $this->helper->offsetSet(1, 'foo');
     }
 
     public function testCreatingLinkStackViaHeadScriptCreatesAppropriateOutput()
@@ -243,10 +231,8 @@ class Zend_View_Helper_HeadLinkTest extends PHPUnit\Framework\TestCase
 
     public function testOverloadingThrowsExceptionWithNoArguments()
     {
-        try {
-            $this->helper->appendStylesheet();
-            $this->fail('Helper should expect at least one argument');
-        } catch (Zend_View_Exception $e) {}
+        $this->expectException(Zend_View_Exception::class);
+        $this->helper->appendStylesheet();
     }
 
     public function testOverloadingShouldAllowSingleArrayArgument()
@@ -258,10 +244,8 @@ class Zend_View_Helper_HeadLinkTest extends PHPUnit\Framework\TestCase
 
     public function testOverloadingUsingSingleArrayArgumentWithInvalidValuesThrowsException()
     {
-        try {
-            $this->helper->setStylesheet(array('bogus' => 'unused'));
-            $this->fail('Invalid attribute values should raise exception');
-        } catch (Zend_View_Exception $e) { }
+        $this->expectException(Zend_View_Exception::class);
+        $this->helper->setStylesheet(array('bogus' => 'unused'));
     }
 
     public function testOverloadingOffsetSetWorks()
@@ -275,10 +259,8 @@ class Zend_View_Helper_HeadLinkTest extends PHPUnit\Framework\TestCase
 
     public function testOverloadingThrowsExceptionWithInvalidMethod()
     {
-        try {
-            $this->helper->bogusMethod();
-            $this->fail('Invalid method should raise exception');
-        } catch (Zend_View_Exception $e) { }
+        $this->expectException(Zend_View_Exception::class);
+        $this->helper->bogusMethod();
     }
 
     public function testStylesheetAttributesGetSet()
@@ -321,14 +303,14 @@ class Zend_View_Helper_HeadLinkTest extends PHPUnit\Framework\TestCase
 
     public function testSettingAlternateWithTooFewArgsRaisesException()
     {
-        try {
-            $this->helper->setAlternate('foo');
-            $this->fail('Setting alternate with fewer than 3 args should raise exception');
-        } catch (Zend_View_Exception $e) { }
-        try {
-            $this->helper->setAlternate('foo', 'bar');
-            $this->fail('Setting alternate with fewer than 3 args should raise exception');
-        } catch (Zend_View_Exception $e) { }
+        $this->expectException(Zend_View_Exception::class);
+        $this->helper->setAlternate('foo');
+    }
+
+    public function testSettingAlternateWithTooFewArgsRaisesException2()
+    {
+        $this->expectException(Zend_View_Exception::class);
+        $this->helper->setAlternate('foo', 'bar');
     }
 
     public function testIndentationIsHonored()

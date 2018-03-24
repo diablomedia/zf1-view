@@ -337,11 +337,8 @@ class Zend_View_Helper_Navigation_MenuTest
     {
         $this->_helper->setPartial(array('menu.phtml'));
 
-        try {
-            $this->_helper->render();
-            $this->fail('invalid $partial should throw Zend_View_Exception');
-        } catch (Zend_View_Exception $e) {
-        }
+        $this->expectException(Zend_View_Exception::class);
+        $this->_helper->render();
     }
 
     public function testSetMaxDepth()

@@ -134,11 +134,8 @@ class Zend_View_Helper_Placeholder_RegistryTest extends PHPUnit\Framework\TestCa
      */
     public function testSetContainerClassThrowsExceptionWithInvalidContainerClass()
     {
-        try {
-            $this->registry->setContainerClass('Zend_View_Helper_Placeholder_RegistryTest_BogusContainer');
-            $this->fail('Invalid container classes should not be accepted');
-        } catch (Exception $e) {
-        }
+        $this->expectException(Exception::class);
+        $this->registry->setContainerClass('Zend_View_Helper_Placeholder_RegistryTest_BogusContainer');
     }
 
     public function testDeletingContainerRemovesFromRegistry()

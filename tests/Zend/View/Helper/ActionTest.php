@@ -188,11 +188,8 @@ class Zend_View_Helper_ActionTest extends PHPUnit\Framework\TestCase
     public function testConstructorThrowsExceptionWithNoControllerDirsInFrontController()
     {
         Zend_Controller_Front::getInstance()->resetInstance();
-        try {
-            $helper = new Zend_View_Helper_Action();
-            $this->fail('Empty front controller should cause action helper to throw exception');
-        } catch (Exception $e) {
-        }
+        $this->expectException(Exception::class);
+        $helper = new Zend_View_Helper_Action();
     }
 
     /**
@@ -207,11 +204,8 @@ class Zend_View_Helper_ActionTest extends PHPUnit\Framework\TestCase
         $response->headersSentThrowsException = false;
         $front->setResponse($response)
               ->addModuleDirectory(dirname(__FILE__) . '/_files/modules');
-        try {
-            $helper = new Zend_View_Helper_Action();
-            $this->fail('No request in front controller should cause action helper to throw exception');
-        } catch (Exception $e) {
-        }
+        $this->expectException(Exception::class);
+        $helper = new Zend_View_Helper_Action();
     }
 
     /**
@@ -225,11 +219,8 @@ class Zend_View_Helper_ActionTest extends PHPUnit\Framework\TestCase
         $request = new Zend_Controller_Request_Http('http://framework.zend.com/foo');
         $front->setRequest($this->request)
               ->addModuleDirectory(dirname(__FILE__) . '/_files/modules');
-        try {
-            $helper = new Zend_View_Helper_Action();
-            $this->fail('No response in front controller should cause action helper to throw exception');
-        } catch (Exception $e) {
-        }
+        $this->expectException(Exception::class);
+        $helper = new Zend_View_Helper_Action();
     }
 
     public function testViewObjectRemainsUnchangedAfterAction()

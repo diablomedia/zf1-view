@@ -94,19 +94,27 @@ class Zend_View_Helper_HeadScriptTest extends PHPUnit\Framework\TestCase
         try {
             $this->helper->append('foo');
             $this->fail('Append should throw exception with invalid item');
-        } catch (Zend_View_Exception $e) { }
+        } catch (Zend_View_Exception $e) {
+            $this->assertSame('Invalid argument passed to append(); please use one of the helper methods, appendScript() or appendFile()', $e->getMessage());
+        }
         try {
             $this->helper->offsetSet(1, 'foo');
             $this->fail('OffsetSet should throw exception with invalid item');
-        } catch (Zend_View_Exception $e) { }
+        } catch (Zend_View_Exception $e) {
+            $this->assertSame('Invalid argument passed to offsetSet(); please use one of the helper methods, offsetSetScript() or offsetSetFile()', $e->getMessage());
+        }
         try {
             $this->helper->prepend('foo');
             $this->fail('Prepend should throw exception with invalid item');
-        } catch (Zend_View_Exception $e) { }
+        } catch (Zend_View_Exception $e) {
+            $this->assertSame('Invalid argument passed to prepend(); please use one of the helper methods, prependScript() or prependFile()', $e->getMessage());
+        }
         try {
             $this->helper->set('foo');
             $this->fail('Set should throw exception with invalid item');
-        } catch (Zend_View_Exception $e) { }
+        } catch (Zend_View_Exception $e) {
+            $this->assertSame('Invalid argument passed to set(); please use one of the helper methods, setScript() or setFile()', $e->getMessage());
+        }
     }
 
     protected function _inflectAction($type)
@@ -227,26 +235,20 @@ class Zend_View_Helper_HeadScriptTest extends PHPUnit\Framework\TestCase
 
     public function testOverloadingThrowsExceptionWithInvalidMethod()
     {
-        try {
-            $this->helper->fooBar('foo');
-            $this->fail('Invalid method should raise exception');
-        } catch (Zend_View_Exception $e) {
-        }
+        $this->expectException(Zend_View_Exception::class);
+        $this->helper->fooBar('foo');
     }
 
     public function testOverloadingWithTooFewArgumentsRaisesException()
     {
-        try {
-            $this->helper->setScript();
-            $this->fail('Too few arguments should raise exception');
-        } catch (Zend_View_Exception $e) {
-        }
+        $this->expectException(Zend_View_Exception::class);
+        $this->helper->setScript();
+    }
 
-        try {
-            $this->helper->offsetSetScript(5);
-            $this->fail('Too few arguments should raise exception');
-        } catch (Zend_View_Exception $e) {
-        }
+    public function testOverloadingWithTooFewArgumentsRaisesException2()
+    {
+        $this->expectException(Zend_View_Exception::class);
+        $this->helper->offsetSetScript(5);
     }
 
     public function testHeadScriptAppropriatelySetsScriptItems()
@@ -352,6 +354,9 @@ document.write(bar.strlen());');
         $this->assertContains('bogus="deferred"', $test);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testCanPerformMultipleSerialCaptures()
     {
         $this->helper->headScript()->captureStart();

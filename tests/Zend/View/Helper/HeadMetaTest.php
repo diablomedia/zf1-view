@@ -105,21 +105,25 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit\Framework\TestCase
             $this->helper->append('foo');
             $this->fail('Non-meta value should not append');
         } catch (Zend_View_Exception $e) {
+            $this->assertSame('Invalid value passed to append; please use appendMeta()', $e->getMessage());
         }
         try {
             $this->helper->offsetSet(3, 'foo');
             $this->fail('Non-meta value should not offsetSet');
         } catch (Zend_View_Exception $e) {
+            $this->assertSame('Invalid value passed to offsetSet; please use offsetSetName() or offsetSetHttpEquiv()', $e->getMessage());
         }
         try {
             $this->helper->prepend('foo');
             $this->fail('Non-meta value should not prepend');
         } catch (Zend_View_Exception $e) {
+            $this->assertSame('Invalid value passed to prepend; please use prependMeta()', $e->getMessage());
         }
         try {
             $this->helper->set('foo');
             $this->fail('Non-meta value should not set');
         } catch (Zend_View_Exception $e) {
+            $this->assertSame('Invalid value passed to set; please use setMeta()', $e->getMessage());
         }
     }
 
@@ -225,20 +229,14 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit\Framework\TestCase
 
     public function testOverloadingThrowsExceptionWithFewerThanTwoArgs()
     {
-        try {
-            $this->helper->setName('foo');
-            $this->fail('Overloading should require at least two arguments');
-        } catch (Zend_View_Exception $e) {
-        }
+        $this->expectException(Zend_View_Exception::class);
+        $this->helper->setName('foo');
     }
 
     public function testOverloadingThrowsExceptionWithInvalidMethodType()
     {
-        try {
-            $this->helper->setFoo('foo');
-            $this->fail('Overloading should only work for (set|prepend|append)(Name|HttpEquiv)');
-        } catch (Zend_View_Exception $e) {
-        }
+        $this->expectException(Zend_View_Exception::class);
+        $this->helper->setFoo('foo');
     }
 
     public function testCanBuildMetaTagsWithAttributes()
@@ -470,10 +468,8 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit\Framework\TestCase
 		$view = new Zend_View();
 		$view->doctype('HTML4_STRICT');
 
-		try {
-			$view->headMeta()->setCharset('utf-8');
-			$this->fail('Should not be able to set charset for a HTML4 doctype');
-		} catch (Zend_View_Exception $e) {}
+		$this->expectException(Zend_View_Exception::class);
+		$view->headMeta()->setCharset('utf-8');
 	}
 
 	/**

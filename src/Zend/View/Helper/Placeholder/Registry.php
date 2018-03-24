@@ -49,6 +49,11 @@ class Zend_View_Helper_Placeholder_Registry
     protected $_items = array();
 
     /**
+     * @var Zend_View_Abstract
+     */
+    public $view;
+
+    /**
      * Retrieve or create registry instnace
      *
      * @return Zend_View_Helper_Placeholder_Registry
