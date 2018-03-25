@@ -18,18 +18,17 @@
         "diablomedia/zendframework1-acl": "^1.0.0",
         "diablomedia/zendframework1-json": "^1.0.0",
         "diablomedia/zendframework1-registry": "^1.0.0",
-        "diablomedia/zendframework1-controller": "dev-master",
-        "diablomedia/zendframework1-currency": "dev-master",
-        "diablomedia/zendframework1-filter": "dev-master",
-        "diablomedia/zendframework1-form": "dev-master",
-        "diablomedia/zendframework1-http": "dev-master",
-        "diablomedia/zendframework1-layout": "dev-master",
-        "diablomedia/zendframework1-locale": "dev-master",
-        "diablomedia/zendframework1-navigation": "dev-master",
-        "diablomedia/zendframework1-paginator": "dev-master",
-        "diablomedia/zendframework1-translate": "dev-master",
-        "diablomedia/zendframework1-uri": "dev-master",
-        "diablomedia/zendframework1-validate": "dev-master"
+        "diablomedia/zendframework1-controller": "*",
+        "diablomedia/zendframework1-currency": "*",
+        "diablomedia/zendframework1-filter": "*",
+        "diablomedia/zendframework1-form": "*",
+        "diablomedia/zendframework1-http": "*",
+        "diablomedia/zendframework1-layout": "*",
+        "diablomedia/zendframework1-locale": "*",
+        "diablomedia/zendframework1-navigation": "*",
+        "diablomedia/zendframework1-translate": "*",
+        "diablomedia/zendframework1-uri": "*",
+        "diablomedia/zendframework1-validate": "*"
     },
     "autoload": {
         "psr-0": {
@@ -55,5 +54,8 @@
         "test": "phpunit ./tests",
         "test-with-coverage": "phpunit --coverage-clover=clover.xml ./tests",
         "phpstan": "phpstan analyze -l0 -c phpstan.neon --no-progress ./src --ansi"
+    },
+    "suggest": {
+        "diablomedia/zendframework1-view-helper-paginationcontrol": "For the PaginationControl View Helper"
     }
 }
