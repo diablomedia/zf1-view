@@ -8,7 +8,7 @@ php:
   - 7.2
   - nightly
 
-env: TMPDIR=/tmp USE_XDEBUG=false CC_TEST_REPORTER_ID=8cbcfb40a4aff9431a0600f0a0ccb25ef4379d427443da50358d10f04a65f35f
+env: TMPDIR=/tmp USE_XDEBUG=false
 
 branches:
   only:
@@ -41,7 +41,7 @@ jobs:
         - composer phpstan
     - stage: test with coverage
       php: 7.1
-      env: TMPDIR=/tmp USE_XDEBUG=true
+      env: TMPDIR=/tmp USE_XDEBUG=true CC_TEST_REPORTER_ID=8cbcfb40a4aff9431a0600f0a0ccb25ef4379d427443da50358d10f04a65f35f
       before_script:
         - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
         - chmod +x ./cc-test-reporter
