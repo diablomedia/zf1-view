@@ -31,11 +31,6 @@
  */
 class Zend_View_Helper_FormErrors extends Zend_View_Helper_FormElement
 {
-    /**
-     * @var Zend_Form_Element
-     */
-    protected $_element;
-
     /**#@+
      * @var string Element block start/end tags and separator
      */
@@ -96,7 +91,7 @@ class Zend_View_Helper_FormErrors extends Zend_View_Helper_FormElement
      * Set end string for displaying errors
      *
      * @param  string $string
-     * @return Zend_View_Helper_FormErrors
+     * @return $this
      */
     public function setElementEnd($string)
     {
@@ -118,7 +113,7 @@ class Zend_View_Helper_FormErrors extends Zend_View_Helper_FormElement
      * Set separator string for displaying errors
      *
      * @param  string $string
-     * @return Zend_View_Helper_FormErrors
+     * @return $this
      */
     public function setElementSeparator($string)
     {
@@ -140,7 +135,7 @@ class Zend_View_Helper_FormErrors extends Zend_View_Helper_FormElement
      * Set start string for displaying errors
      *
      * @param  string $string
-     * @return Zend_View_Helper_FormErrors
+     * @return $this
      */
     public function setElementStart($string)
     {
