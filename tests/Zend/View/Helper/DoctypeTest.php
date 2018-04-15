@@ -128,19 +128,20 @@ class Zend_View_Helper_DoctypeTest extends PHPUnit\Framework\TestCase
         $this->assertFalse($doctype->isXhtml());
     }
 
-	public function testIsHtml5() {
-		foreach (array('HTML5', 'XHTML5') as $type) {
+    public function testIsHtml5()
+    {
+        foreach (array('HTML5', 'XHTML5') as $type) {
             $doctype = $this->helper->doctype($type);
             $this->assertEquals($type, $doctype->getDoctype());
             $this->assertTrue($doctype->isHtml5());
         }
 
-		foreach (array('HTML4_STRICT', 'HTML4_LOOSE', 'HTML4_FRAMESET', 'XHTML1_STRICT', 'XHTML1_TRANSITIONAL', 'XHTML1_FRAMESET') as $type) {
-			$doctype = $this->helper->doctype($type);
+        foreach (array('HTML4_STRICT', 'HTML4_LOOSE', 'HTML4_FRAMESET', 'XHTML1_STRICT', 'XHTML1_TRANSITIONAL', 'XHTML1_FRAMESET') as $type) {
+            $doctype = $this->helper->doctype($type);
             $this->assertEquals($type, $doctype->getDoctype());
             $this->assertFalse($doctype->isHtml5());
-		}
-	}
+        }
+    }
 
     public function testIsRdfa()
     {
@@ -158,11 +159,12 @@ class Zend_View_Helper_DoctypeTest extends PHPUnit\Framework\TestCase
         $this->assertFalse($doctype->isRdfa());
     }
 
-	public function testCanRegisterCustomHtml5Doctype() {
-		$doctype = $this->helper->doctype('<!DOCTYPE html>');
+    public function testCanRegisterCustomHtml5Doctype()
+    {
+        $doctype = $this->helper->doctype('<!DOCTYPE html>');
         $this->assertEquals('CUSTOM', $doctype->getDoctype());
         $this->assertTrue($doctype->isHtml5());
-	}
+    }
 
     public function testCanRegisterCustomXhtmlDoctype()
     {

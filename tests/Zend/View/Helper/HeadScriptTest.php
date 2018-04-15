@@ -58,7 +58,7 @@ class Zend_View_Helper_HeadScriptTest extends PHPUnit\Framework\TestCase
             unset($registry[$regKey]);
         }
         $this->basePath = dirname(__FILE__) . '/_files/modules';
-        $this->helper = new Zend_View_Helper_HeadScript();
+        $this->helper   = new Zend_View_Helper_HeadScript();
     }
 
     /**
@@ -360,21 +360,21 @@ document.write(bar.strlen());');
     public function testCanPerformMultipleSerialCaptures()
     {
         $this->helper->headScript()->captureStart();
-        echo "this is something captured";
+        echo 'this is something captured';
         $this->helper->headScript()->captureEnd();
         try {
             $this->helper->headScript()->captureStart();
         } catch (Zend_View_Exception $e) {
             $this->fail('Serial captures should be allowed');
         }
-        echo "this is something else captured";
+        echo 'this is something else captured';
         $this->helper->headScript()->captureEnd();
     }
 
     public function testCannotNestCaptures()
     {
         $this->helper->headScript()->captureStart();
-        echo "this is something captured";
+        echo 'this is something captured';
         try {
             $this->helper->headScript()->captureStart();
             $this->helper->headScript()->captureEnd();
@@ -415,7 +415,6 @@ document.write(bar.strlen());');
      */
     public function testContainerMaintainsCorrectOrderOfItems()
     {
-
         $this->helper->offsetSetFile(1, 'test1.js');
         $this->helper->offsetSetFile(20, 'test2.js');
         $this->helper->offsetSetFile(10, 'test3.js');
@@ -442,7 +441,7 @@ document.write(bar.strlen());');
         $this->helper->setFile('foo.js');
 
         $expected = '<script type="text/javascript" src="foo.js"></script>';
-        $test = $this->helper->toString();
+        $test     = $this->helper->toString();
         $this->assertEquals($expected, $test);
     }
 
@@ -453,7 +452,9 @@ document.write(bar.strlen());');
     {
         $this->helper->setAllowArbitraryAttributes(true);
         $this->helper->appendFile(
-            '/js/foo.js', 'text/javascript', array('conditional' => 'lt IE 7')
+            '/js/foo.js',
+            'text/javascript',
+            array('conditional' => 'lt IE 7')
         );
         $test = $this->helper->toString();
 
@@ -467,7 +468,9 @@ document.write(bar.strlen());');
     {
         $this->helper->setAllowArbitraryAttributes(true);
         $this->helper->appendScript(
-            '// some script', 'text/javascript', array('noescape' => true)
+            '// some script',
+            'text/javascript',
+            array('noescape' => true)
         );
         $test = $this->helper->toString();
 
@@ -480,7 +483,9 @@ document.write(bar.strlen());');
     public function testNoEscapeDefaultsToFalse()
     {
         $this->helper->appendScript(
-            '// some script' . PHP_EOL, 'text/javascript', array()
+            '// some script' . PHP_EOL,
+            'text/javascript',
+            array()
         );
         $test = $this->helper->toString();
 
@@ -494,7 +499,9 @@ document.write(bar.strlen());');
     public function testNoEscapeTrue()
     {
         $this->helper->appendScript(
-            '// some script' . PHP_EOL, 'text/javascript', array('noescape' => true)
+            '// some script' . PHP_EOL,
+            'text/javascript',
+            array('noescape' => true)
         );
         $test = $this->helper->toString();
 
@@ -509,7 +516,9 @@ document.write(bar.strlen());');
     {
         $this->helper->setAllowArbitraryAttributes(true);
         $this->helper->appendFile(
-            '/js/foo.js', 'text/javascript', array('conditional' => '!IE')
+            '/js/foo.js',
+            'text/javascript',
+            array('conditional' => '!IE')
         );
         $test = $this->helper->toString();
         $this->assertContains('<!--[if !IE]><!--><', $test);

@@ -52,7 +52,7 @@ class Zend_View_Helper_FormText extends Zend_View_Helper_FormElement
         $info = $this->_getInfo($name, $value, $attribs);
         // extracted below
         $disable = null;
-        $id = null;
+        $id      = null;
         extract($info); // name, value, attribs, options, listsep, disable
 
         // build the element

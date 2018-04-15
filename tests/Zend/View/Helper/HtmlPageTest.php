@@ -45,7 +45,7 @@ class Zend_View_Helper_HtmlPageTest extends PHPUnit\Framework\TestCase
      */
     protected function setUp()
     {
-        $this->view = new Zend_View();
+        $this->view   = new Zend_View();
         $this->helper = new Zend_View_Helper_HtmlPage();
         $this->helper->setView($this->view);
     }

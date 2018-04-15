@@ -349,7 +349,7 @@ class Zend_View_Helper_FormSelectTest extends PHPUnit\Framework\TestCase
                 'baz' => 'Baz,'
             ),
             'attribs' => array(
-               'multiple' => false,
+               'multiple'      => false,
                'optionClasses' => array('foo' => 'fooClass',
                                         'bar' => 'barClass',
                                         'baz' => 'bazClass')

@@ -157,7 +157,7 @@ abstract class Zend_View_Helper_Placeholder_Container_Standalone extends Zend_Vi
      */
     public function __set($key, $value)
     {
-        $container = $this->getContainer();
+        $container       = $this->getContainer();
         $container[$key] = $value;
     }
 

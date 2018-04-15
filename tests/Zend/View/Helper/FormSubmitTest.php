@@ -65,8 +65,8 @@ class Zend_View_Helper_FormSubmitTest extends PHPUnit\Framework\TestCase
     public function testRendersSubmitInput()
     {
         $html = $this->helper->formSubmit(array(
-            'name'    => 'foo',
-            'value'   => 'Submit!',
+            'name'  => 'foo',
+            'value' => 'Submit!',
         ));
         $this->assertRegExp('/<input[^>]*?(type="submit")/', $html);
     }
@@ -90,8 +90,8 @@ class Zend_View_Helper_FormSubmitTest extends PHPUnit\Framework\TestCase
     public function testValueAttributeIsAlwaysRendered()
     {
         $html = $this->helper->formSubmit(array(
-            'name'    => 'foo',
-            'value'   => '',
+            'name'  => 'foo',
+            'value' => '',
         ));
         $this->assertRegExp('/<input[^>]*?(value="")/', $html);
     }

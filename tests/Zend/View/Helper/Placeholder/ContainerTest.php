@@ -92,8 +92,8 @@ class Zend_View_Helper_Placeholder_ContainerTest extends PHPUnit\Framework\TestC
     {
         $this->container['foo'] = 'bar';
         $this->container['bar'] = 'baz';
-        $expected = array('foo' => 'bar', 'bar' => 'baz');
-        $return   = $this->container->getValue();
+        $expected               = array('foo' => 'bar', 'bar' => 'baz');
+        $return                 = $this->container->getValue();
         $this->assertEquals($expected, $return);
     }
 
@@ -194,7 +194,7 @@ class Zend_View_Helper_Placeholder_ContainerTest extends PHPUnit\Framework\TestC
     public function testCapturingToPlaceholderAppendsContent()
     {
         $this->container[] = 'foo';
-        $originalCount = count($this->container);
+        $originalCount     = count($this->container);
 
         $this->container->captureStart();
         echo 'This is content intended for capture';
@@ -215,7 +215,7 @@ class Zend_View_Helper_Placeholder_ContainerTest extends PHPUnit\Framework\TestC
     public function testCapturingToPlaceholderUsingPrependPrependsContent()
     {
         $this->container[] = 'foo';
-        $originalCount = count($this->container);
+        $originalCount     = count($this->container);
 
         $this->container->captureStart('PREPEND');
         echo 'This is content intended for capture';
@@ -299,11 +299,11 @@ class Zend_View_Helper_Placeholder_ContainerTest extends PHPUnit\Framework\TestC
     public function testNestedCapturesThrowsException()
     {
         $this->container[] = 'foo';
-        $caught = false;
+        $caught            = false;
         try {
             $this->container->captureStart('SET');
-                $this->container->captureStart('SET');
-                $this->container->captureEnd();
+            $this->container->captureStart('SET');
+            $this->container->captureEnd();
             $this->container->captureEnd();
         } catch (Exception $e) {
             $this->container->captureEnd();
@@ -343,7 +343,7 @@ class Zend_View_Helper_Placeholder_ContainerTest extends PHPUnit\Framework\TestC
         $this->container[] = 'foo';
         $this->container[] = 'bar';
         $this->container[] = 'baz';
-        $value = $this->container->toString();
+        $value             = $this->container->toString();
         $this->assertEquals('foobarbaz', $value);
     }
 
@@ -374,7 +374,7 @@ class Zend_View_Helper_Placeholder_ContainerTest extends PHPUnit\Framework\TestC
                         ->setSeparator('</li>' . PHP_EOL . '<li>')
                         ->setPostfix('</li></ul>')
                         ->setIndent('    ');
-        $value = $this->container->toString();
+        $value         = $this->container->toString();
         $expectedValue = '    <ul><li>foo</li>' . PHP_EOL . '    <li>bar</li>' . PHP_EOL . '    <li>baz</li></ul>';
         $this->assertEquals($expectedValue, $value);
     }
@@ -403,7 +403,7 @@ class Zend_View_Helper_Placeholder_ContainerTest extends PHPUnit\Framework\TestC
         $this->container->prepend('baz');
 
         $expected = array('baz', 'foo' => 'bar');
-        $array = $this->container->getArrayCopy();
+        $array    = $this->container->getArrayCopy();
         $this->assertSame($expected, $array);
     }
 

@@ -34,7 +34,7 @@ abstract class Zend_View_Helper_Placeholder_Container_Abstract extends ArrayObje
      * Whether or not to override all contents of placeholder
      * @const string
      */
-    const SET    = 'SET';
+    const SET = 'SET';
 
     /**
      * Whether or not to append contents to placeholder
@@ -52,13 +52,13 @@ abstract class Zend_View_Helper_Placeholder_Container_Abstract extends ArrayObje
      * What text to prefix the placeholder with when rendering
      * @var string
      */
-    protected $_prefix    = '';
+    protected $_prefix = '';
 
     /**
      * What text to append the placeholder with when rendering
      * @var string
      */
-    protected $_postfix   = '';
+    protected $_postfix = '';
 
     /**
      * What string to use between individual items in the placeholder when rendering

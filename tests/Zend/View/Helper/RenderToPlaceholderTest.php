@@ -36,7 +36,7 @@ class Zend_View_Helper_RenderToPlaceholderTest extends PHPUnit\Framework\TestCas
 
     public function setUp()
     {
-        $this->_view = new Zend_View(array('scriptPath'=>dirname(__FILE__).'/_files/scripts/'));
+        $this->_view = new Zend_View(array('scriptPath' => dirname(__FILE__) . '/_files/scripts/'));
     }
 
     public function testDefaultEmpty()
@@ -45,5 +45,4 @@ class Zend_View_Helper_RenderToPlaceholderTest extends PHPUnit\Framework\TestCas
         $placeholder = new Zend_View_Helper_Placeholder();
         $this->assertEquals("Foo Bar\n", $placeholder->placeholder('fooPlaceholder')->getValue());
     }
-
 }

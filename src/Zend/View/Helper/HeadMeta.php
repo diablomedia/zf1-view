@@ -163,7 +163,7 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
                 $args[] = array();
             }
 
-            $item  = $this->createData($type, $args[0], $args[1], $args[2]);
+            $item = $this->createData($type, $args[0], $args[1], $args[2]);
 
             if ('offsetSet' == $action) {
                 $this->offsetSet($index, $item);
@@ -187,10 +187,10 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
      */
     public function setCharset($charset)
     {
-        $item = new stdClass;
-        $item->type = 'charset';
-        $item->charset = $charset;
-        $item->content = null;
+        $item            = new stdClass;
+        $item->type      = 'charset';
+        $item->charset   = $charset;
+        $item->content   = null;
         $item->modifiers = array();
         $this->set($item);
         return $this;
@@ -206,8 +206,7 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
     {
         if ((!$item instanceof stdClass)
             || !isset($item->type)
-            || !isset($item->modifiers))
-        {
+            || !isset($item->modifiers)) {
             return false;
         }
 
@@ -219,7 +218,7 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
         }
 
         // <meta property= ... /> is only supported with doctype RDFa
-        if ( !is_null($this->view) && !$this->view->doctype()->isRdfa()
+        if (!is_null($this->view) && !$this->view->doctype()->isRdfa()
             && $item->type === 'property') {
             return false;
         }
@@ -256,7 +255,7 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
     public function offsetSet($index, $value)
     {
         if (!$this->_isValid($value)) {
-            $e =  new Zend_View_Exception('Invalid value passed to offsetSet; please use offsetSetName() or offsetSetHttpEquiv()');
+            $e = new Zend_View_Exception('Invalid value passed to offsetSet; please use offsetSetName() or offsetSetHttpEquiv()');
             $e->setView($this->view);
             throw $e;
         }
@@ -378,8 +377,7 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
 
         if (isset($item->modifiers['conditional'])
             && !empty($item->modifiers['conditional'])
-            && is_string($item->modifiers['conditional']))
-        {
+            && is_string($item->modifiers['conditional'])) {
             if (str_replace(' ', '', $item->modifiers['conditional']) === '!IE') {
                 $meta = '<!-->' . $meta . '<!--';
             }

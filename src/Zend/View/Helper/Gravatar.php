@@ -100,7 +100,7 @@ class Zend_View_Helper_Gravatar extends Zend_View_Helper_HtmlElement
      * @param  array $attribs Attributes for image tag (title, alt etc.)
      * @return Zend_View_Helper_Gravatar
      */
-    public function gravatar($email = "", $options = array(), $attribs = array())
+    public function gravatar($email = '', $options = array(), $attribs = array())
     {
         $this->setEmail($email);
         $this->setOptions($options);
@@ -215,7 +215,7 @@ class Zend_View_Helper_Gravatar extends Zend_View_Helper_HtmlElement
      * @param string $email
      * @return Zend_View_Helper_Gravatar
      */
-    public function setEmail( $email )
+    public function setEmail($email)
     {
         $this->_email = $email;
         return $this;
@@ -351,9 +351,8 @@ class Zend_View_Helper_Gravatar extends Zend_View_Helper_HtmlElement
      *
      * @return string
      */
-    public function  __toString()
+    public function __toString()
     {
         return $this->getImgTag();
-
     }
 }

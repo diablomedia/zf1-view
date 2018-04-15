@@ -62,14 +62,17 @@ class Zend_View_Helper_FormRadio extends Zend_View_Helper_FormElement
      *
      * @return string The radio buttons XHTML.
      */
-    public function formRadio($name, $value = null, $attribs = null,
-        $options = null, $listsep = "<br />\n")
-    {
-
+    public function formRadio(
+        $name,
+        $value = null,
+        $attribs = null,
+        $options = null,
+        $listsep = "<br />\n"
+    ) {
         $info = $this->_getInfo($name, $value, $attribs, $options, $listsep);
         // extracted below
-        $id = null;
-        $escape = null;
+        $id      = null;
+        $escape  = null;
         $disable = null;
         extract($info); // name, value, attribs, options, listsep, disable
 
@@ -86,7 +89,7 @@ class Zend_View_Helper_FormRadio extends Zend_View_Helper_FormElement
 
             if ($tmp) {
                 // make sure first char is lowercase
-                $tmp[0] = strtolower($tmp[0]);
+                $tmp[0]              = strtolower($tmp[0]);
                 $label_attribs[$tmp] = $val;
                 unset($attribs[$key]);
             }
@@ -125,7 +128,7 @@ class Zend_View_Helper_FormRadio extends Zend_View_Helper_FormElement
         $pattern = @preg_match('/\pL/u', 'a')
             ? '/[^\p{L}\p{N}\-\_]/u'    // Unicode
             : '/[^a-zA-Z0-9\-\_]/';     // No Unicode
-        $filter = new Zend_Filter_PregReplace($pattern, "");
+        $filter = new Zend_Filter_PregReplace($pattern, '');
 
         // add radio buttons to the list.
         foreach ($options as $opt_value => $opt_label) {

@@ -357,9 +357,9 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
      */
     public function setBasePath($path, $classPrefix = 'Zend_View')
     {
-        $path        = rtrim($path, '/');
-        $path        = rtrim($path, '\\');
-        $path       .= DIRECTORY_SEPARATOR;
+        $path = rtrim($path, '/');
+        $path = rtrim($path, '\\');
+        $path .= DIRECTORY_SEPARATOR;
         $classPrefix = rtrim($classPrefix, '_') . '_';
         $this->setScriptPath($path . 'scripts');
         $this->setHelperPath($path . 'helpers', $classPrefix . 'Helper');
@@ -384,9 +384,9 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
      */
     public function addBasePath($path, $classPrefix = 'Zend_View')
     {
-        $path        = rtrim($path, '/');
-        $path        = rtrim($path, '\\');
-        $path       .= DIRECTORY_SEPARATOR;
+        $path = rtrim($path, '/');
+        $path = rtrim($path, '\\');
+        $path .= DIRECTORY_SEPARATOR;
         $classPrefix = rtrim($classPrefix, '_') . '_';
         $this->addScriptPath($path . 'scripts');
         $this->addHelperPath($path . 'helpers', $classPrefix . 'Helper');
@@ -496,7 +496,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
                 case 'filter':
                 case 'helper':
                 default:
-                    $prefix     .= $pType;
+                    $prefix .= $pType;
                     $pathPrefix .= $pType;
                     $loader = new Zend_Loader_PluginLoader(array(
                         $prefix => $pathPrefix
@@ -576,7 +576,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
 
         if (!$helper instanceof Zend_View_Interface) {
             if (!method_exists($helper, $name)) {
-                $e =  new Zend_View_Exception(
+                $e = new Zend_View_Exception(
                     'View helper must implement Zend_View_Interface or have a method matching the name provided'
                 );
                 $e->setView($this);
@@ -588,7 +588,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
             $helper->setView($this);
         }
 
-        $name = ucfirst($name);
+        $name                 = ucfirst($name);
         $this->_helper[$name] = $helper;
         return $this;
     }
@@ -696,7 +696,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
      */
     public function getAllPaths()
     {
-        $paths = $this->_path;
+        $paths           = $this->_path;
         $paths['helper'] = $this->getHelperPaths();
         $paths['filter'] = $this->getFilterPaths();
         return $paths;
@@ -827,7 +827,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
      */
     public function getVars()
     {
-        $vars   = get_object_vars($this);
+        $vars = get_object_vars($this);
         foreach ($vars as $key => $value) {
             if ('_' == substr($key, 0, 1)) {
                 unset($vars[$key]);
@@ -847,7 +847,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
      */
     public function clearVars()
     {
-        $vars   = get_object_vars($this);
+        $vars = get_object_vars($this);
         foreach ($vars as $key => $value) {
             if ('_' != substr($key, 0, 1)) {
                 unset($this->$key);
@@ -964,7 +964,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
 
         $message = "script '$name' not found in path ("
                  . implode(PATH_SEPARATOR, $this->_path['script'])
-                 . ")";
+                 . ')';
         $e = new Zend_View_Exception($message);
         $e->setView($this);
         throw $e;
@@ -1012,8 +1012,8 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
         foreach ((array) $path as $dir) {
             // attempt to strip any possible separator and
             // append the system directory separator
-            $dir  = rtrim($dir, '/');
-            $dir  = rtrim($dir, '\\');
+            $dir = rtrim($dir, '/');
+            $dir = rtrim($dir, '\\');
             $dir .= '/';
 
             switch ($type) {
@@ -1159,7 +1159,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
         }
 
         if (!isset($store[$name])) {
-            $class = $this->getPluginLoader($type)->load($name);
+            $class        = $this->getPluginLoader($type)->load($name);
             $store[$name] = new $class();
             if (method_exists($store[$name], 'setView')) {
                 $store[$name]->setView($this);

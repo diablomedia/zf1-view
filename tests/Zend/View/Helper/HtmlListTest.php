@@ -45,7 +45,7 @@ class Zend_View_Helper_HtmlListTest extends PHPUnit\Framework\TestCase
      */
     protected function setUp()
     {
-        $this->view = new Zend_View();
+        $this->view   = new Zend_View();
         $this->helper = new Zend_View_Helper_HtmlList();
         $this->helper->setView($this->view);
     }
@@ -83,7 +83,7 @@ class Zend_View_Helper_HtmlListTest extends PHPUnit\Framework\TestCase
 
     public function testMakeUnorderedListWithAttribs()
     {
-        $items = array('one', 'two', 'three');
+        $items   = array('one', 'two', 'three');
         $attribs = array('class' => 'selected', 'name' => 'list');
 
         $list = $this->helper->htmlList($items, false, $attribs);
@@ -99,7 +99,7 @@ class Zend_View_Helper_HtmlListTest extends PHPUnit\Framework\TestCase
 
     public function testMakeOrderedListWithAttribs()
     {
-        $items = array('one', 'two', 'three');
+        $items   = array('one', 'two', 'three');
         $attribs = array('class' => 'selected', 'name' => 'list');
 
         $list = $this->helper->htmlList($items, true, $attribs);
@@ -124,7 +124,7 @@ class Zend_View_Helper_HtmlListTest extends PHPUnit\Framework\TestCase
 
         $this->assertContains('<ul>' . Zend_View_Helper_HtmlList::EOL, $list);
         $this->assertContains('</ul>' . Zend_View_Helper_HtmlList::EOL, $list);
-        $this->assertContains('one<ul>' . Zend_View_Helper_HtmlList::EOL.'<li>four', $list);
+        $this->assertContains('one<ul>' . Zend_View_Helper_HtmlList::EOL . '<li>four', $list);
         $this->assertContains('<li>six</li>' . Zend_View_Helper_HtmlList::EOL . '</ul>' .
             Zend_View_Helper_HtmlList::EOL . '</li>' . Zend_View_Helper_HtmlList::EOL . '<li>two', $list);
     }
@@ -199,7 +199,6 @@ class Zend_View_Helper_HtmlListTest extends PHPUnit\Framework\TestCase
         foreach ($items[1] as $item) {
             $this->assertRegExp('#<ul[^>]*?class="foo"[^>]*>.*?(<li>' . $item . ')#s', $list);
         }
-
     }
 
     /**

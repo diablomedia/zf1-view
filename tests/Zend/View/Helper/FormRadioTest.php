@@ -38,7 +38,7 @@ class Zend_View_Helper_FormRadioTest extends PHPUnit\Framework\TestCase
 {
     public function setUp()
     {
-        $this->view   = new Zend_View();
+        $this->view = new Zend_View();
         $this->view->doctype('HTML4_LOOSE'); // Set default doctype
         $this->helper = new Zend_View_Helper_FormRadio();
         $this->helper->setView($this->view);
@@ -308,7 +308,7 @@ class Zend_View_Helper_FormRadioTest extends PHPUnit\Framework\TestCase
         $options = array(
             'foo bar' => 'Foo',
             'bar baz' => 'Bar',
-            'baz' => 'Baz'
+            'baz'     => 'Baz'
         );
         $html = $this->helper->formRadio(array(
             'name'    => 'foo[]',
@@ -328,7 +328,7 @@ class Zend_View_Helper_FormRadioTest extends PHPUnit\Framework\TestCase
         $options = array(
             'foo bar' => 'Foo',
             'bar baz' => 'Bar',
-            'baz' => 'Baz'
+            'baz'     => 'Baz'
         );
         $html = $this->helper->formRadio(array(
             'name'    => 'foo[bar]',
@@ -389,7 +389,7 @@ class Zend_View_Helper_FormRadioTest extends PHPUnit\Framework\TestCase
      */
     public function testDashesShouldNotBeFilteredFromId()
     {
-        $name = "Foo";
+        $name    = 'Foo';
         $options = array(
             -1 => 'Test -1',
              0 => 'Test 0',
@@ -399,13 +399,13 @@ class Zend_View_Helper_FormRadioTest extends PHPUnit\Framework\TestCase
         $formRadio = new Zend_View_Helper_FormRadio();
         $formRadio->setView(new Zend_View());
         $html = $formRadio->formRadio($name, -1, null, $options);
-        foreach ( $options as $key=>$value ) {
+        foreach ($options as $key => $value) {
             $fid = "{$name}-{$key}";
-            $this->assertRegExp('/<input([^>]*)(id="'.$fid.'")/', $html);
+            $this->assertRegExp('/<input([^>]*)(id="' . $fid . '")/', $html);
         }
 
         // Assert that radio for value -1 is the selected one
-        $this->assertRegExp('/<input([^>]*)(id="'.$name.'--1")([^>]*)(checked="checked")/', $html);
+        $this->assertRegExp('/<input([^>]*)(id="' . $name . '--1")([^>]*)(checked="checked")/', $html);
     }
 
     /**
@@ -448,48 +448,47 @@ class Zend_View_Helper_FormRadioTest extends PHPUnit\Framework\TestCase
         $this->assertContains('value="baz" />', $html);
     }
 
-     /**
-      * @group ZF-11620
-      */
-     public function testSeparatorCanRendersAsXhtmlByDefault()
-     {
-         $this->view->doctype('XHTML1_STRICT');
-         $options = array(
+    /**
+     * @group ZF-11620
+     */
+    public function testSeparatorCanRendersAsXhtmlByDefault()
+    {
+        $this->view->doctype('XHTML1_STRICT');
+        $options = array(
              'foo' => 'Foo',
              'bar' => 'Bar',
              'baz' => 'Baz'
          );
-         $html = $this->helper->formRadio(array(
+        $html = $this->helper->formRadio(array(
              'name'    => 'foo',
              'value'   => 'bar',
              'options' => $options,
          ));
 
-         $this->assertContains('<br />', $html);
-         $count = substr_count($html, '<br />');
-         $this->assertEquals(2, $count);
-     }
+        $this->assertContains('<br />', $html);
+        $count = substr_count($html, '<br />');
+        $this->assertEquals(2, $count);
+    }
 
-     /**
-      * @group ZF-11620
-      */
-     public function testeparatorCanRendersAsHtml()
-     {
-         $this->view->doctype('HTML4_STRICT');
-         $options = array(
+    /**
+     * @group ZF-11620
+     */
+    public function testeparatorCanRendersAsHtml()
+    {
+        $this->view->doctype('HTML4_STRICT');
+        $options = array(
              'foo' => 'Foo',
              'bar' => 'Bar',
              'baz' => 'Baz'
          );
-         $html = $this->helper->formRadio(array(
+        $html = $this->helper->formRadio(array(
              'name'    => 'foo',
              'value'   => 'bar',
              'options' => $options,
          ));
 
-         $this->assertContains('<br>', $html);
-         $count = substr_count($html, '<br>');
-         $this->assertEquals(2, $count);
-     }
-
+        $this->assertContains('<br>', $html);
+        $count = substr_count($html, '<br>');
+        $this->assertEquals(2, $count);
+    }
 }

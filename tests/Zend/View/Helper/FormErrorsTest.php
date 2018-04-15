@@ -98,7 +98,7 @@ class Zend_View_Helper_FormErrorsTest extends PHPUnit\Framework\TestCase
     public function testFormErrorsRendersUnorderedListByDefault()
     {
         $errors = array('foo', 'bar', 'baz');
-        $html = $this->helper->formErrors($errors);
+        $html   = $this->helper->formErrors($errors);
         $this->assertContains('<ul', $html);
         foreach ($errors as $error) {
             $this->assertContains('<li>' . $error . '</li>', $html);
@@ -112,7 +112,7 @@ class Zend_View_Helper_FormErrorsTest extends PHPUnit\Framework\TestCase
                      ->setElementSeparator('</dt><dt>')
                      ->setElementEnd('</dt></dl>');
         $errors = array('foo', 'bar', 'baz');
-        $html = $this->helper->formErrors($errors);
+        $html   = $this->helper->formErrors($errors);
         $this->assertContains('<dl>', $html);
         foreach ($errors as $error) {
             $this->assertContains('<dt>' . $error . '</dt>', $html);

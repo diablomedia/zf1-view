@@ -43,7 +43,7 @@ class Zend_View_Helper_FormLabelTest extends PHPUnit\Framework\TestCase
      */
     protected function setUp()
     {
-        $this->view = new Zend_View();
+        $this->view   = new Zend_View();
         $this->helper = new Zend_View_Helper_FormLabel();
         $this->helper->setView($this->view);
     }
@@ -66,7 +66,7 @@ class Zend_View_Helper_FormLabelTest extends PHPUnit\Framework\TestCase
 
     public function testFormLabelWithInputNeedingEscapesUsesViewEscaping()
     {
-        $label = $this->helper->formLabel('<&foo', '</bar>');
+        $label    = $this->helper->formLabel('<&foo', '</bar>');
         $expected = '<label for="' . $this->view->escape('<&foo') . '">' . $this->view->escape('</bar>') . '</label>';
         $this->assertEquals($expected, $label);
     }

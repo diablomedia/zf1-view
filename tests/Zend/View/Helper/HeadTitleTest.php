@@ -58,7 +58,7 @@ class Zend_View_Helper_HeadTitleTest extends PHPUnit\Framework\TestCase
             unset($registry[$regKey]);
         }
         $this->basePath = dirname(__FILE__) . '/_files/modules';
-        $this->helper = new Zend_View_Helper_HeadTitle();
+        $this->helper   = new Zend_View_Helper_HeadTitle();
     }
 
     /**
@@ -194,9 +194,9 @@ class Zend_View_Helper_HeadTitleTest extends PHPUnit\Framework\TestCase
         $this->assertEquals('<title>Message 1 (en)</title>', $this->helper->toString());
     }
 
-   /**
-    * @group ZF-8036
-    */
+    /**
+     * @group ZF-8036
+     */
     public function testHeadTitleZero()
     {
         $this->helper->headTitle('0');

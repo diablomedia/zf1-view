@@ -33,7 +33,7 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
 {
     public function setUp()
     {
-        $this->notices = array();
+        $this->notices        = array();
         $this->errorReporting = error_reporting();
         $this->displayErrors  = ini_get('display_errors');
     }
@@ -225,7 +225,7 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
 
         // verify that object handle of a stub was cache by calling it again
         // without its path in the helper search paths
-        $this->assertEquals( 'foo', $view->stub1() );
+        $this->assertEquals('foo', $view->stub1());
     }
 
     /**
@@ -259,7 +259,7 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
             $view->stubEmpty();
             // @todo  fail if no exception?
         } catch (Zend_Exception $e) {
-            $this->assertContains("not found", $e->getMessage());
+            $this->assertContains('not found', $e->getMessage());
         }
     }
 
@@ -285,7 +285,7 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
 
         $view->bar = 'bar';
 
-        $this->assertEquals("foo bar baz\n", $view->render('test.phtml') );
+        $this->assertEquals("foo bar baz\n", $view->render('test.phtml'));
     }
 
     /**
@@ -313,7 +313,7 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
      */
     public function testSetArrayProperty()
     {
-        $view = new Zend_View();
+        $view        = new Zend_View();
         $view->foo   = array();
         $view->foo[] = 42;
 
@@ -324,7 +324,7 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
 
         $view->assign('bar', array());
         $view->bar[] = 'life';
-        $bar = $view->bar;
+        $bar         = $view->bar;
         $this->assertInternalType('array', $bar);
         $this->assertEquals('life', $bar[0], var_export($bar, 1));
 
@@ -332,7 +332,7 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
             'baz' => array('universe'),
         ));
         $view->baz[] = 'everything';
-        $baz = $view->baz;
+        $baz         = $view->baz;
         $this->assertInternalType('array', $baz);
         $this->assertEquals('universe', $baz[0]);
         $this->assertEquals('everything', $baz[1], var_export($baz, 1));
@@ -343,7 +343,7 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
      */
     public function testClearVars()
     {
-        $view = new Zend_View();
+        $view          = new Zend_View();
         $view->foo     = array();
         $view->content = 'content';
 
@@ -403,7 +403,7 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
 
     public function testGetVars()
     {
-        $view = new Zend_View();
+        $view      = new Zend_View();
         $view->foo = 'bar';
         $view->bar = 'baz';
         $view->baz = array('foo', 'bar');
@@ -430,7 +430,7 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
 
     public function testEmptyPropertiesReturnAppropriately()
     {
-        $view = new Zend_View();
+        $view      = new Zend_View();
         $view->foo = false;
         $view->bar = null;
         $view->baz = '';
@@ -450,7 +450,7 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
                 ->setHelperPath(dirname(__FILE__) . '/View/_stubs/HelperDir1')
                 ->setFilterPath(dirname(__FILE__) . '/View/_stubs/HelperDir1')
                 ->assign('foo', 'bar');
-        } catch (Exception $e){
+        } catch (Exception $e) {
             $this->fail('Setters should not throw exceptions');
         }
 
@@ -474,7 +474,7 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
             'filter'           => 'urlencode',
         );
 
-        $view = new Zend_View($config);
+        $view        = new Zend_View($config);
         $scriptPaths = $view->getScriptPaths();
         $helperPaths = $view->getHelperPaths();
         $filterPaths = $view->getFilterPaths();
@@ -529,7 +529,7 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
 
     public function testHelperPathWithPrefix()
     {
-        $view = new Zend_View();
+        $view   = new Zend_View();
         $status = $view->addHelperPath(dirname(__FILE__) . '/View/_stubs/HelperDir1/', 'My_View_Helper');
         $this->assertSame($view, $status);
         $helperPaths = $view->getHelperPaths();
@@ -546,7 +546,7 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
 
     public function testHelperPathWithPrefixAndRelativePath()
     {
-        $view = new Zend_View();
+        $view   = new Zend_View();
         $status = $view->addHelperPath('Zend/View/_stubs/HelperDir1/', 'My_View_Helper');
         $this->assertSame($view, $status);
         $helperPaths = $view->getHelperPaths();
@@ -556,7 +556,7 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
 
     public function testFilterPathWithPrefix()
     {
-        $view = new Zend_View();
+        $view   = new Zend_View();
         $status = $view->addFilterPath(dirname(__FILE__) . '/View/_stubs/HelperDir1/', 'My_View_Filter');
         $this->assertSame($view, $status);
         $filterPaths = $view->getFilterPaths();
@@ -596,21 +596,21 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
 
     public function testEscape()
     {
-        $view = new Zend_View();
-        $original = "Me, Myself, & I";
+        $view     = new Zend_View();
+        $original = 'Me, Myself, & I';
         $escaped  = $view->escape($original);
         $this->assertNotEquals($original, $escaped);
-        $this->assertEquals("Me, Myself, &amp; I", $escaped);
+        $this->assertEquals('Me, Myself, &amp; I', $escaped);
     }
 
     public function testCustomEscape()
     {
         $view = new Zend_View();
         $view->setEscape('strip_tags');
-        $original = "<p>Some text</p>";
+        $original = '<p>Some text</p>';
         $escaped  = $view->escape($original);
         $this->assertNotEquals($original, $escaped);
-        $this->assertEquals("Some text", $escaped);
+        $this->assertEquals('Some text', $escaped);
     }
 
     /**
@@ -736,7 +736,7 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
         $scriptPaths = $this->_filterPath($view->getScriptPaths());
         $helperPaths = $this->_filterPath($view->getHelperPaths());
         $filterPaths = $this->_filterPath($view->getFilterPaths());
-        $this->assertContains($base  . '/scripts', $scriptPaths);
+        $this->assertContains($base . '/scripts', $scriptPaths);
 
         $found  = false;
         $prefix = false;
@@ -842,7 +842,7 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
 
     public function testGetFilterPath()
     {
-        $base = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'View' . DIRECTORY_SEPARATOR;
+        $base     = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'View' . DIRECTORY_SEPARATOR;
         $expected = $base . '_stubs' . DIRECTORY_SEPARATOR . 'FilterDir1' . DIRECTORY_SEPARATOR . 'Foo.php';
 
         $view = new Zend_View();
@@ -877,13 +877,13 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
             $view->render('bazbatNotExists.php.tpl');
             $this->fail('Non-existent view script should cause an exception');
         } catch (Exception $e) {
-            $this->assertContains($base. '_templates', $e->getMessage());
+            $this->assertContains($base . '_templates', $e->getMessage());
         }
     }
 
     public function testGetHelperIsCaseInsensitive()
     {
-        $view = new Zend_View();
+        $view   = new Zend_View();
         $hidden = $view->formHidden('foo', 'bar');
         $this->assertContains('<input type="hidden"', $hidden);
 
@@ -1028,7 +1028,7 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
     {
         $view = new Zend_View(array(
             'helperPath' => array(
-                'My_View'   => 'My/View/',
+                'My_View' => 'My/View/',
             ),
         ));
         $paths = $view->getHelperPaths();
@@ -1042,7 +1042,7 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
     {
         $view = new Zend_View(array(
             'filterPath' => array(
-                'My_View'   => 'My/View/',
+                'My_View' => 'My/View/',
             ),
         ));
         $paths = $view->getFilterPaths();
@@ -1054,14 +1054,14 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
      */
     public function testRegisterHelperShouldRegisterHelperWithView()
     {
-    	require_once dirname(__FILE__) . '/View/_stubs/HelperDir1/Stub1.php';
+        require_once dirname(__FILE__) . '/View/_stubs/HelperDir1/Stub1.php';
 
-    	$view = new Zend_View();
-    	$helper = new Foo_View_Helper_Stub1();
-    	$view->registerHelper($helper, 'stub1');
+        $view   = new Zend_View();
+        $helper = new Foo_View_Helper_Stub1();
+        $view->registerHelper($helper, 'stub1');
 
-    	$this->assertEquals($view->getHelper('stub1'), $helper);
-    	$this->assertEquals($view->stub1(), 'foo');
+        $this->assertEquals($view->getHelper('stub1'), $helper);
+        $this->assertEquals($view->stub1(), 'foo');
     }
 
     /**
@@ -1092,19 +1092,19 @@ class Zend_ViewTest extends PHPUnit\Framework\TestCase
      */
     public function testRegisterHelperShouldRegisterViewObjectWithHelper()
     {
-    	$view = new Zend_View();
-    	$helper = new Zend_View_Helper_Doctype();
-    	$view->registerHelper($helper, 'doctype');
+        $view   = new Zend_View();
+        $helper = new Zend_View_Helper_Doctype();
+        $view->registerHelper($helper, 'doctype');
         $this->assertSame($view, $helper->view);
     }
 
     /**
      * @group ZF-9000
-	 * @group ZF-4622
+     * @group ZF-4622
      */
     public function testAddingStreamSchemeAsScriptPathShouldNotMangleThePath()
     {
-    	$view = new Zend_View();
+        $view = new Zend_View();
         $path = rtrim('file://' . str_replace('\\', '/', realpath(dirname(__FILE__))), '/') . '/';
         $view->addScriptPath($path);
         $paths = $view->getScriptPaths();

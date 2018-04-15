@@ -42,7 +42,7 @@ class Zend_View_Helper_FormTest extends PHPUnit\Framework\TestCase
      */
     protected function setUp()
     {
-        $this->view = new Zend_View();
+        $this->view   = new Zend_View();
         $this->helper = new Zend_View_Helper_Form();
         $this->helper->setView($this->view);
     }
@@ -115,7 +115,7 @@ class Zend_View_Helper_FormTest extends PHPUnit\Framework\TestCase
      */
     public function testPassingEmptyNameAttributeToUnnamedFormShouldNotRenderNameAttrib()
     {
-        $form = $this->helper->form('', array('action' => '/foo', 'method' => 'get', 'name' => NULL));
+        $form = $this->helper->form('', array('action' => '/foo', 'method' => 'get', 'name' => null));
         $this->assertNotRegExp('/<form[^>]*(name=".*")/', $form);
     }
 
@@ -124,7 +124,7 @@ class Zend_View_Helper_FormTest extends PHPUnit\Framework\TestCase
      */
     public function testPassingEmptyNameAttributeToNamedFormShouldNotOverrideNameAttrib()
     {
-        $form = $this->helper->form('RealName', array('action' => '/foo', 'method' => 'get', 'name' => NULL));
+        $form = $this->helper->form('RealName', array('action' => '/foo', 'method' => 'get', 'name' => null));
         $this->assertRegExp('/<form[^>]*(name="RealName")/', $form);
     }
 

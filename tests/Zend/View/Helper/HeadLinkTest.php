@@ -59,8 +59,8 @@ class Zend_View_Helper_HeadLinkTest extends PHPUnit\Framework\TestCase
             }
         }
         $this->basePath = dirname(__FILE__) . '/_files/modules';
-        $this->view = new Zend_View();
-        $this->helper = new Zend_View_Helper_HeadLink();
+        $this->view     = new Zend_View();
+        $this->helper   = new Zend_View_Helper_HeadLink();
         $this->helper->setView($this->view);
     }
 
@@ -130,7 +130,7 @@ class Zend_View_Helper_HeadLinkTest extends PHPUnit\Framework\TestCase
         $string = $this->helper->toString();
         $lines  = substr_count($string, PHP_EOL);
         $this->assertEquals(2, $lines);
-        $lines  = substr_count($string, '<link ');
+        $lines = substr_count($string, '<link ');
         $this->assertEquals(3, $lines, $string);
 
         foreach ($links as $link) {
@@ -166,7 +166,7 @@ class Zend_View_Helper_HeadLinkTest extends PHPUnit\Framework\TestCase
         $string = $this->helper->toString();
         $lines  = substr_count($string, PHP_EOL);
         $this->assertEquals(2, $lines);
-        $lines  = substr_count($string, '<link ');
+        $lines = substr_count($string, '<link ');
         $this->assertEquals(3, $lines, $string);
 
         foreach ($links as $link) {
@@ -205,9 +205,9 @@ class Zend_View_Helper_HeadLinkTest extends PHPUnit\Framework\TestCase
         $string = $this->helper->toString();
         $lines  = substr_count($string, PHP_EOL);
         $this->assertEquals(2, $lines);
-        $lines  = substr_count($string, '<link ');
+        $lines = substr_count($string, '<link ');
         $this->assertEquals(3, $lines, $string);
-        $lines  = substr_count($string, ' rel="alternate"');
+        $lines = substr_count($string, ' rel="alternate"');
         $this->assertEquals(3, $lines, $string);
 
         foreach ($links as $link) {
@@ -398,10 +398,10 @@ class Zend_View_Helper_HeadLinkTest extends PHPUnit\Framework\TestCase
      */
     public function testContainerMaintainsCorrectOrderOfItems()
     {
-        $this->helper->headLink()->offsetSetStylesheet(1,'/test1.css');
-        $this->helper->headLink()->offsetSetStylesheet(10,'/test2.css');
-        $this->helper->headLink()->offsetSetStylesheet(20,'/test3.css');
-        $this->helper->headLink()->offsetSetStylesheet(5,'/test4.css');
+        $this->helper->headLink()->offsetSetStylesheet(1, '/test1.css');
+        $this->helper->headLink()->offsetSetStylesheet(10, '/test2.css');
+        $this->helper->headLink()->offsetSetStylesheet(20, '/test3.css');
+        $this->helper->headLink()->offsetSetStylesheet(5, '/test4.css');
 
         $test = $this->helper->toString();
 
@@ -428,7 +428,7 @@ class Zend_View_Helper_HeadLinkTest extends PHPUnit\Framework\TestCase
     public function testHeadLinkAllowsOverrideOfRelAttribute()
     {
         $this->helper->appendStylesheet('/css/auth.less', 'all', null, array('rel' => 'stylesheet/less'));
-        $this->assertEquals(1, substr_count($this->helper->toString(), "rel=\""));
+        $this->assertEquals(1, substr_count($this->helper->toString(), 'rel="'));
         $this->assertContains('rel="stylesheet/less"', $this->helper->toString());
     }
 

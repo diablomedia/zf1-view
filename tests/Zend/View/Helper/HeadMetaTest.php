@@ -62,7 +62,7 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit\Framework\TestCase
         $this->basePath = dirname(__FILE__) . '/_files/modules';
         $this->view     = new Zend_View();
         $this->view->doctype('XHTML1_STRICT');
-        $this->helper   = new Zend_View_Helper_HeadMeta();
+        $this->helper = new Zend_View_Helper_HeadMeta();
         $this->helper->setView($this->view);
     }
 
@@ -145,7 +145,7 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit\Framework\TestCase
             $values = $this->helper->getArrayCopy();
             $this->assertEquals($i + 1, count($values));
 
-            $item   = $values[$i];
+            $item = $values[$i];
             $this->assertObjectHasAttribute('type', $item);
             $this->assertObjectHasAttribute('modifiers', $item);
             $this->assertObjectHasAttribute('content', $item);
@@ -177,9 +177,9 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit\Framework\TestCase
 
     protected function _testOverloadSet($type)
     {
-        $setAction = 'set' . $this->_inflectAction($type);
+        $setAction    = 'set' . $this->_inflectAction($type);
         $appendAction = 'append' . $this->_inflectAction($type);
-        $string = 'foo';
+        $string       = 'foo';
         for ($i = 0; $i < 3; ++$i) {
             $this->helper->$appendAction('keywords', $string);
             $string .= ' foo';
@@ -340,7 +340,8 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit\Framework\TestCase
     {
         $this->view->doctype('XHTML1_RDFA');
         $this->helper->headMeta('foo', 'og:title', 'property');
-        $this->assertEquals('<meta property="og:title" content="foo" />',
+        $this->assertEquals(
+            '<meta property="og:title" content="foo" />',
                             $this->helper->toString()
                            );
     }
@@ -444,7 +445,6 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit\Framework\TestCase
      */
     public function testContainerMaintainsCorrectOrderOfItems()
     {
-
         $this->helper->offsetSetName(1, 'keywords', 'foo');
         $this->helper->offsetSetName(10, 'description', 'foo');
         $this->helper->offsetSetHttpEquiv(20, 'pragma', 'baz');
@@ -460,36 +460,39 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $test);
     }
 
-	/**
-	 * @group ZF-7722
-	 */
-	public function testCharsetValidateFail()
-	{
-		$view = new Zend_View();
-		$view->doctype('HTML4_STRICT');
+    /**
+     * @group ZF-7722
+     */
+    public function testCharsetValidateFail()
+    {
+        $view = new Zend_View();
+        $view->doctype('HTML4_STRICT');
 
-		$this->expectException(Zend_View_Exception::class);
-		$view->headMeta()->setCharset('utf-8');
-	}
+        $this->expectException(Zend_View_Exception::class);
+        $view->headMeta()->setCharset('utf-8');
+    }
 
-	/**
-	 * @group ZF-7722
-	 */
-	public function testCharset() {
-		$view = new Zend_View();
-		$view->doctype('HTML5');
+    /**
+     * @group ZF-7722
+     */
+    public function testCharset()
+    {
+        $view = new Zend_View();
+        $view->doctype('HTML5');
 
-		$view->headMeta()->setCharset('utf-8');
-		$this->assertEquals(
-			'<meta charset="utf-8">',
-			$view->headMeta()->toString());
+        $view->headMeta()->setCharset('utf-8');
+        $this->assertEquals(
+            '<meta charset="utf-8">',
+            $view->headMeta()->toString()
+        );
 
-		$view->doctype('XHTML5');
+        $view->doctype('XHTML5');
 
-		$this->assertEquals(
-			'<meta charset="utf-8"/>',
-			$view->headMeta()->toString());
-	}
+        $this->assertEquals(
+            '<meta charset="utf-8"/>',
+            $view->headMeta()->toString()
+        );
+    }
 
     /**
      * @group ZF-11835
@@ -508,8 +511,8 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit\Framework\TestCase
     public function testStandaloneInstantiationWithoutViewDoesNotCauseFatalError()
     {
         $expected = '<meta name="foo" content="bar" />';
-        $helper = new Zend_View_Helper_HeadMeta();
-        $result = (string)$helper->headMeta()->appendName('foo','bar');
+        $helper   = new Zend_View_Helper_HeadMeta();
+        $result   = (string)$helper->headMeta()->appendName('foo', 'bar');
         $this->assertEquals($expected, $result);
     }
 

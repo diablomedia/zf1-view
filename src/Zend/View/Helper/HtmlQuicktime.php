@@ -39,7 +39,7 @@ class Zend_View_Helper_HtmlQuicktime extends Zend_View_Helper_HtmlObject
      * Object classid
      *
      */
-    const ATTRIB_CLASSID  = 'clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B';
+    const ATTRIB_CLASSID = 'clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B';
 
     /**
      * Object Codebase

@@ -47,7 +47,7 @@ class Zend_View_Helper_FormTextTest extends PHPUnit\Framework\TestCase
             $registry = Zend_Registry::getInstance();
             unset($registry['Zend_View_Helper_Doctype']);
         }
-        $this->view = new Zend_View();
+        $this->view   = new Zend_View();
         $this->helper = new Zend_View_Helper_FormText();
         $this->helper->setView($this->view);
     }

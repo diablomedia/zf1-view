@@ -49,7 +49,7 @@ class Zend_View_Helper_FormFile extends Zend_View_Helper_FormElement
     {
         $info = $this->_getInfo($name, null, $attribs);
         // Extracted below
-        $id = null;
+        $id      = null;
         $disable = null;
         extract($info); // name, id, value, attribs, options, listsep, disable
 

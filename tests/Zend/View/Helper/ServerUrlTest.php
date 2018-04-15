@@ -77,7 +77,7 @@ class Zend_View_Helper_ServerUrlTest extends PHPUnit\Framework\TestCase
     public function testConstructorWithHostAndHttpsOn()
     {
         $_SERVER['HTTP_HOST'] = 'example.com';
-        $_SERVER['HTTPS'] = 'on';
+        $_SERVER['HTTPS']     = 'on';
 
         $url = new Zend_View_Helper_ServerUrl();
         $this->assertEquals('https://example.com', $url->serverUrl());
@@ -86,7 +86,7 @@ class Zend_View_Helper_ServerUrlTest extends PHPUnit\Framework\TestCase
     public function testConstructorWithHostAndHttpsTrue()
     {
         $_SERVER['HTTP_HOST'] = 'example.com';
-        $_SERVER['HTTPS'] = true;
+        $_SERVER['HTTPS']     = true;
 
         $url = new Zend_View_Helper_ServerUrl();
         $this->assertEquals('https://example.com', $url->serverUrl());
@@ -95,7 +95,7 @@ class Zend_View_Helper_ServerUrlTest extends PHPUnit\Framework\TestCase
     public function testConstructorWithHostIncludingPortAndHttpsTrue()
     {
         $_SERVER['HTTP_HOST'] = 'example.com:8181';
-        $_SERVER['HTTPS'] = true;
+        $_SERVER['HTTPS']     = true;
 
         $url = new Zend_View_Helper_ServerUrl();
         $this->assertEquals('https://example.com:8181', $url->serverUrl());
@@ -103,7 +103,7 @@ class Zend_View_Helper_ServerUrlTest extends PHPUnit\Framework\TestCase
 
     public function testConstructorWithHttpHostAndServerNameAndPortSet()
     {
-        $_SERVER['HTTP_HOST'] = 'example.com';
+        $_SERVER['HTTP_HOST']   = 'example.com';
         $_SERVER['SERVER_NAME'] = 'example.org';
         $_SERVER['SERVER_PORT'] = 8080;
 
@@ -133,8 +133,8 @@ class Zend_View_Helper_ServerUrlTest extends PHPUnit\Framework\TestCase
 
     public function testServerUrlWithInteger()
     {
-        $_SERVER['HTTPS']     = 'off';
-        $_SERVER['HTTP_HOST'] = 'example.com';
+        $_SERVER['HTTPS']       = 'off';
+        $_SERVER['HTTP_HOST']   = 'example.com';
         $_SERVER['REQUEST_URI'] = '/foo.html';
 
         $url = new Zend_View_Helper_ServerUrl();
@@ -143,8 +143,8 @@ class Zend_View_Helper_ServerUrlTest extends PHPUnit\Framework\TestCase
 
     public function testServerUrlWithObject()
     {
-        $_SERVER['HTTPS']     = 'off';
-        $_SERVER['HTTP_HOST'] = 'example.com';
+        $_SERVER['HTTPS']       = 'off';
+        $_SERVER['HTTP_HOST']   = 'example.com';
         $_SERVER['REQUEST_URI'] = '/foo.html';
 
         $url = new Zend_View_Helper_ServerUrl();
@@ -157,8 +157,8 @@ class Zend_View_Helper_ServerUrlTest extends PHPUnit\Framework\TestCase
     public function testServerUrlWithScheme()
     {
         $_SERVER['HTTP_SCHEME'] = 'https';
-        $_SERVER['HTTP_HOST'] = 'example.com';
-        $url = new Zend_View_Helper_ServerUrl();
+        $_SERVER['HTTP_HOST']   = 'example.com';
+        $url                    = new Zend_View_Helper_ServerUrl();
         $this->assertEquals('https://example.com', $url->serverUrl());
     }
 
@@ -168,8 +168,8 @@ class Zend_View_Helper_ServerUrlTest extends PHPUnit\Framework\TestCase
     public function testServerUrlWithPort()
     {
         $_SERVER['SERVER_PORT'] = 443;
-        $_SERVER['HTTP_HOST'] = 'example.com';
-        $url = new Zend_View_Helper_ServerUrl();
+        $_SERVER['HTTP_HOST']   = 'example.com';
+        $url                    = new Zend_View_Helper_ServerUrl();
         $this->assertEquals('https://example.com', $url->serverUrl());
     }
 }

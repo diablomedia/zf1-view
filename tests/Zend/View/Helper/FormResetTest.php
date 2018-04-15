@@ -65,8 +65,8 @@ class Zend_View_Helper_FormResetTest extends PHPUnit\Framework\TestCase
     public function testShouldRenderResetInput()
     {
         $html = $this->helper->formReset(array(
-            'name'    => 'foo',
-            'value'   => 'Reset',
+            'name'  => 'foo',
+            'value' => 'Reset',
         ));
         $this->assertRegExp('/<input[^>]*?(type="reset")/', $html);
     }

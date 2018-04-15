@@ -48,7 +48,7 @@ class Zend_View_Helper_Placeholder_StandaloneContainerTest extends PHPUnit\Frame
             unset($registry[$regKey]);
         }
         $this->basePath = dirname(__FILE__) . '/_files/modules';
-        $this->helper = new Zend_View_Helper_Placeholder_StandaloneContainerTest_Foo();
+        $this->helper   = new Zend_View_Helper_Placeholder_StandaloneContainerTest_Foo();
     }
 
     /**

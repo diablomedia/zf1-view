@@ -58,7 +58,7 @@ class Zend_View_Helper_FormFileTest extends PHPUnit\Framework\TestCase
             $registry = Zend_Registry::getInstance();
             unset($registry['Zend_View_Helper_Doctype']);
         }
-        $this->view = new Zend_View();
+        $this->view   = new Zend_View();
         $this->helper = new Zend_View_Helper_FormFile();
         $this->helper->setView($this->view);
     }

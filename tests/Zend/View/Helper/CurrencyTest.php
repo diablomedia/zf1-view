@@ -57,9 +57,12 @@ class Zend_View_Helper_CurrencyTest extends PHPUnit\Framework\TestCase
     public function setUp()
     {
         $this->clearRegistry();
-        $this->_cache = Zend_Cache::factory('Core', 'File',
-                 array('lifetime' => 120, 'automatic_serialization' => true),
-                 array('cache_dir' => dirname(__FILE__) . '/../../_files/'));
+        $this->_cache = Zend_Cache::factory(
+            'Core',
+            'File',
+                 array('lifetime'  => 120, 'automatic_serialization' => true),
+                 array('cache_dir' => dirname(__FILE__) . '/../../_files/')
+        );
         Zend_Currency::setCache($this->_cache);
 
         $this->helper = new Zend_View_Helper_Currency('de_AT');
@@ -134,7 +137,7 @@ class Zend_View_Helper_CurrencyTest extends PHPUnit\Framework\TestCase
         $curr = new Zend_Currency('de_AT');
 
         $this->helper->setCurrency($curr);
-        $this->assertEquals("€ 1.234,56", $this->helper->currency(1234.56, "de_AT"));
+        $this->assertEquals('€ 1.234,56', $this->helper->currency(1234.56, 'de_AT'));
     }
 
     public function testCurrencyObjectNullByDefault()

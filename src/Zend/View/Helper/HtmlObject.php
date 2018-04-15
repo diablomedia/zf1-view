@@ -46,7 +46,7 @@ class Zend_View_Helper_HtmlObject extends Zend_View_Helper_HtmlElement
                                      'type' => $type), $attribs);
 
         // Params
-        $paramHtml = array();
+        $paramHtml      = array();
         $closingBracket = $this->getClosingBracket();
 
         foreach ($params as $param => $options) {

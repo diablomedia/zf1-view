@@ -58,12 +58,16 @@ class Zend_View_Helper_FormSelect extends Zend_View_Helper_FormElement
      *
      * @return string The select tag and options XHTML.
      */
-    public function formSelect($name, $value = null, $attribs = null,
-        $options = null, $listsep = "<br />\n")
-    {
+    public function formSelect(
+        $name,
+        $value = null,
+        $attribs = null,
+        $options = null,
+        $listsep = "<br />\n"
+    ) {
         $info = $this->_getInfo($name, $value, $attribs, $options, $listsep);
         // Extracted below
-        $id = null;
+        $id      = null;
         $disable = null;
         extract($info); // name, id, value, attribs, options, listsep, disable
 
@@ -135,7 +139,7 @@ class Zend_View_Helper_FormSelect extends Zend_View_Helper_FormElement
                 $list[] = '<optgroup'
                         . $opt_disable
                         . $opt_id
-                        . ' label="' . $this->view->escape($opt_value) .'">';
+                        . ' label="' . $this->view->escape($opt_value) . '">';
                 foreach ($opt_label as $val => $lab) {
                     $list[] = $this->_build($val, $lab, $value, $disable, $optionClasses);
                 }
@@ -176,9 +180,9 @@ class Zend_View_Helper_FormSelect extends Zend_View_Helper_FormElement
         $opt = '<option'
              . ' value="' . $this->view->escape($value) . '"';
 
-             if ($class) {
-             $opt .= ' class="' . $class . '"';
-         }
+        if ($class) {
+            $opt .= ' class="' . $class . '"';
+        }
         // selected?
         if (in_array((string) $value, $selected)) {
             $opt .= ' selected="selected"';
@@ -189,9 +193,8 @@ class Zend_View_Helper_FormSelect extends Zend_View_Helper_FormElement
             $opt .= ' disabled="disabled"';
         }
 
-        $opt .= '>' . $this->view->escape($label) . "</option>";
+        $opt .= '>' . $this->view->escape($label) . '</option>';
 
         return $opt;
     }
-
 }

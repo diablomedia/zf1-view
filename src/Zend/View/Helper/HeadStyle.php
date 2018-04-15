@@ -182,8 +182,7 @@ class Zend_View_Helper_HeadStyle extends Zend_View_Helper_Placeholder_Container_
     {
         if ((!$value instanceof stdClass)
             || !isset($value->content)
-            || !isset($value->attributes))
-        {
+            || !isset($value->attributes)) {
             return false;
         }
 
@@ -274,9 +273,9 @@ class Zend_View_Helper_HeadStyle extends Zend_View_Helper_Placeholder_Container_
             throw $e;
         }
 
-        $this->_captureLock        = true;
-        $this->_captureAttrs       = $attrs;
-        $this->_captureType        = $type;
+        $this->_captureLock  = true;
+        $this->_captureAttrs = $attrs;
+        $this->_captureType  = $type;
         ob_start();
     }
 
@@ -328,19 +327,19 @@ class Zend_View_Helper_HeadStyle extends Zend_View_Helper_Placeholder_Container_
                     continue;
                 }
                 if ('media' == $key) {
-                    if(false === strpos($value, ',')) {
+                    if (false === strpos($value, ',')) {
                         if (!in_array($value, $this->_mediaTypes)) {
                             continue;
                         }
                     } else {
                         $media_types = explode(',', $value);
-                        $value = '';
-                        foreach($media_types as $type) {
+                        $value       = '';
+                        foreach ($media_types as $type) {
                             $type = trim($type);
                             if (!in_array($type, $this->_mediaTypes)) {
                                 continue;
                             }
-                            $value .= $type .',';
+                            $value .= $type . ',';
                         }
                         $value = substr($value, 0, -1);
                     }
@@ -349,14 +348,14 @@ class Zend_View_Helper_HeadStyle extends Zend_View_Helper_Placeholder_Container_
             }
         }
 
-        $escapeStart = $indent . '<!--'. PHP_EOL;
-        $escapeEnd = $indent . '-->'. PHP_EOL;
+        $escapeStart = $indent . '<!--' . PHP_EOL;
+        $escapeEnd   = $indent . '-->' . PHP_EOL;
         if (isset($item->attributes['conditional'])
             && !empty($item->attributes['conditional'])
             && is_string($item->attributes['conditional'])
         ) {
             $escapeStart = null;
-            $escapeEnd = null;
+            $escapeEnd   = null;
         }
 
         $html = '<style type="text/css"' . $attrString . '>' . PHP_EOL
@@ -410,11 +409,11 @@ class Zend_View_Helper_HeadStyle extends Zend_View_Helper_Placeholder_Container_
     {
         if (!isset($attributes['media'])) {
             $attributes['media'] = 'screen';
-        } else if(is_array($attributes['media'])) {
+        } elseif (is_array($attributes['media'])) {
             $attributes['media'] = implode(',', $attributes['media']);
         }
 
-        $data = new stdClass();
+        $data             = new stdClass();
         $data->content    = $content;
         $data->attributes = $attributes;
 

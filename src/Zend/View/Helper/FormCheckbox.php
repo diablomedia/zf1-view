@@ -57,7 +57,7 @@ class Zend_View_Helper_FormCheckbox extends Zend_View_Helper_FormElement
     {
         $info = $this->_getInfo($name, $value, $attribs);
         // Extracted below
-        $id = null;
+        $id      = null;
         $disable = null;
         extract($info); // name, id, value, attribs, options, listsep, disable
 
@@ -141,7 +141,7 @@ class Zend_View_Helper_FormCheckbox extends Zend_View_Helper_FormElement
         $checkedString = '';
         if ($checked || ((string) $value === $checkedValue)) {
             $checkedString = ' checked="checked"';
-            $checked = true;
+            $checked       = true;
         } else {
             $checked = false;
         }

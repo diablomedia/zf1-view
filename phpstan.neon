@@ -1,4 +1,7 @@
 parameters:
+    excludes_analyse:
+        - %rootDir%/../../../tests/*
+        - %rootDir%/../../../vendor/*
     ignoreErrors:
         # Magic __call method is used for these
         - '#Call to an undefined method Zend_View_Helper_.+::.+\(\)\.#'
