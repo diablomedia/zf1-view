@@ -143,7 +143,7 @@ abstract class Zend_View_Helper_FormElement extends Zend_View_Helper_HtmlElement
         } elseif ('' !== $info['name']) {
             $info['id'] = trim(strtr(
                 $info['name'],
-                                     array('[' => '-', ']' => '')
+                array('[' => '-', ']' => '')
             ), '-');
         }
         

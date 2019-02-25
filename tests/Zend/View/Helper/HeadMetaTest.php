@@ -342,7 +342,7 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit\Framework\TestCase
         $this->helper->headMeta('foo', 'og:title', 'property');
         $this->assertEquals(
             '<meta property="og:title" content="foo" />',
-                            $this->helper->toString()
+            $this->helper->toString()
                            );
     }
 

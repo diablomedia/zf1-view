@@ -171,7 +171,7 @@ class Zend_View_Helper_GravatarTest extends PHPUnit\Framework\TestCase
     {
         $this->assertRegExp(
             '/src="https:\/\/secure.gravatar.com\/avatar\/[a-z0-9]{32}.+"/',
-                $this->_object->gravatar('example@example.com', array('secure' => true))->__toString()
+            $this->_object->gravatar('example@example.com', array('secure' => true))->__toString()
         );
     }
 
@@ -182,10 +182,10 @@ class Zend_View_Helper_GravatarTest extends PHPUnit\Framework\TestCase
     {
         $this->assertRegExp(
             '/class="gravatar" title="Gravatar"/',
-                $this->_object->gravatar(
-                    'example@example.com',
-                    array(),
-                        array('class' => 'gravatar', 'title' => 'Gravatar')
+            $this->_object->gravatar(
+                'example@example.com',
+                array(),
+                array('class' => 'gravatar', 'title' => 'Gravatar')
                 )
                      ->__toString()
         );
@@ -198,9 +198,9 @@ class Zend_View_Helper_GravatarTest extends PHPUnit\Framework\TestCase
     {
         $this->assertRegExp(
             '/src="http:\/\/www.gravatar.com\/avatar\/[a-z0-9]{32}\?s=125&amp;d=wavatar&amp;r=pg"/',
-                $this->_object->gravatar(
-                    'example@example.com',
-                        array('rating' => 'pg', 'imgSize' => 125, 'defaultImg' => 'wavatar',
+            $this->_object->gravatar(
+                'example@example.com',
+                array('rating'         => 'pg', 'imgSize' => 125, 'defaultImg' => 'wavatar',
                             'secure'   => false)
                 )
                      ->__toString()
@@ -219,7 +219,7 @@ class Zend_View_Helper_GravatarTest extends PHPUnit\Framework\TestCase
             $_SERVER['HTTPS'] = $value;
             $this->assertRegExp(
                 '/src="https:\/\/secure.gravatar.com\/avatar\/[a-z0-9]{32}.+"/',
-                    $this->_object->gravatar('example@example.com')->__toString()
+                $this->_object->gravatar('example@example.com')->__toString()
             );
         }
     }
@@ -233,7 +233,7 @@ class Zend_View_Helper_GravatarTest extends PHPUnit\Framework\TestCase
 
         $this->assertRegExp(
             '/src="http:\/\/www.gravatar.com\/avatar\/[a-z0-9]{32}.+"/',
-                $this->_object->gravatar('example@example.com')->__toString()
+            $this->_object->gravatar('example@example.com')->__toString()
         );
     }
 
@@ -249,7 +249,7 @@ class Zend_View_Helper_GravatarTest extends PHPUnit\Framework\TestCase
 
         $this->assertRegExp(
             '/src="http:\/\/www.gravatar.com\/avatar\/[a-z0-9]{32}.+"/',
-                            $this->_object->getImgTag()
+            $this->_object->getImgTag()
         );
     }
 
@@ -257,7 +257,7 @@ class Zend_View_Helper_GravatarTest extends PHPUnit\Framework\TestCase
     {
         $this->assertRegExp(
             '/(src="http:\/\/www.gravatar.com\/avatar\/[a-z0-9]{32}.+")/',
-                            $this->_object->getImgTag()
+            $this->_object->getImgTag()
         );
     }
 
@@ -265,7 +265,7 @@ class Zend_View_Helper_GravatarTest extends PHPUnit\Framework\TestCase
     {
         $this->assertRegExp(
             "/^<img\s.+/",
-        $this->_object->gravatar('example@example.com')->__toString()
+            $this->_object->gravatar('example@example.com')->__toString()
         );
     }
 
