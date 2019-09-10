@@ -186,7 +186,7 @@ class Zend_View_Helper_GravatarTest extends PHPUnit\Framework\TestCase
                 'example@example.com',
                 array(),
                 array('class' => 'gravatar', 'title' => 'Gravatar')
-                )
+            )
                      ->__toString()
         );
     }
@@ -202,7 +202,7 @@ class Zend_View_Helper_GravatarTest extends PHPUnit\Framework\TestCase
                 'example@example.com',
                 array('rating'         => 'pg', 'imgSize' => 125, 'defaultImg' => 'wavatar',
                             'secure'   => false)
-                )
+            )
                      ->__toString()
         );
     }
