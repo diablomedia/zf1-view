@@ -174,6 +174,7 @@ class Zend_View_Helper_Cycle implements Iterator
      *
      * @return Zend_View_Helper_Cycle
      */
+    #[\ReturnTypeWillChange]
     public function prev()
     {
         $count = count($this->_data[$this->_name]);
@@ -190,6 +191,7 @@ class Zend_View_Helper_Cycle implements Iterator
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         if ($this->_pointers[$this->_name] < 0) {
@@ -227,6 +229,7 @@ class Zend_View_Helper_Cycle implements Iterator
      *
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return $this->_data[$this->_name][$this->key()];
