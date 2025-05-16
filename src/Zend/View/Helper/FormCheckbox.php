@@ -53,7 +53,7 @@ class Zend_View_Helper_FormCheckbox extends Zend_View_Helper_FormElement
      * @param array $attribs Attributes for the element tag.
      * @return string The element XHTML.
      */
-    public function formCheckbox($name, $value = null, $attribs = null, array $checkedOptions = null)
+    public function formCheckbox($name, $value = null, $attribs = null, ?array $checkedOptions = null)
     {
         $info = $this->_getInfo($name, $value, $attribs);
         // Extracted below
@@ -110,7 +110,7 @@ class Zend_View_Helper_FormCheckbox extends Zend_View_Helper_FormElement
      * @param  array|null $checkedOptions
      * @return array
      */
-    public static function determineCheckboxInfo($value, $checked, array $checkedOptions = null)
+    public static function determineCheckboxInfo($value, $checked, ?array $checkedOptions = null)
     {
         // Checked/unchecked values
         $checkedValue   = null;
